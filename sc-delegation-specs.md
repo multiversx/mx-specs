@@ -41,7 +41,7 @@ One address from an SP can request creation of one DSC only. In order to create 
 **Registration flow**
 Staking provider sends a transaction to the Metachain to the DM address with createNewDelegationContract@listOfProperties.
 SP must send enough gas and at least baseDeposit (SP registration deposit) with this transaction.
-The DM will create a new address in the Metachain for that SP and will “deploy” the delegation system smart contract to that address, calling the INIT function as well which will also set the properties given by the SP (some of these properties are upgradable).
+The DM will create a new address in the Metachain for that SP and will “deploy” the delegation system smart contract to that address, calling the `init()` - init(serviceFee, maxDelegationCap) function as well which will also set the properties given by the SP (some of these properties are upgradable). The function is called precisely once, from the DM, when the DSC is first created. Parameters `serviceFee` and `maxDelegationCap` are the initial contract parameters, which can be changed later by the SP through separate functions. The SP is set as the transaction initiator. In addition, the fund call value of this function must be at least the `baseDeposit` global value, which is currently 1250 eGold. This value represents the initial SP’s funds. They are required in order to force the SP to have skin in the game and prevent spam. The initial owner funds can be more than `baseDeposit`, if the owner wants to demonstrate to its delegators commitment to its service. These funds are only withdrawable when there are no staked nodes in the SP. Initial owner funds are immediately staked.
 The SP will receive in a smart contract the result: a generated smart contract’s address and the SP will become the owner of that address. As the owner of that address, the SP will be able to do several actions detailed below in the SP section.
 
 From this moment on, the new address will work as a DSC with the defined properties. Users will be able to delegate their tokens to that address if they choose that SP.
@@ -49,12 +49,6 @@ From this moment on, the new address will work as a DSC with the defined propert
 ### Staking Provider (SP)
 
 This section assumes that a DSC has been generated and deployed by the DM for a given SP, as detailed in the previous section.  Recall that the SP is the owner of that DSC.  Below we discuss the functions that the SP, or the system or the DM on behalf of the SP, can call on the DSC.
-
-**Register:** one transaction that must include “some” properties.
-
-This function is `init()` - init(serviceFee, maxDelegationCap) and it initializes the DSC. The function is called precisely once, from the DM, when the DSC is first created. Parameters `serviceFee` and `maxDelegationCap` are the initial contract parameters, which can be changed later by the SP through separate functions. The SP is set as the transaction initiator. In addition, the fund call value of this function must be at least the `baseDeposit` global value, which is currently 1250 eGold. This value represents the initial SP’s funds. They are required in order to force the SP to have skin in the game and prevent spam. The initial owner funds can be more than `baseDeposit`, if the owner wants to demonstrate to its delegators commitment to its service. These funds are only withdrawable when there are no staked nodes in the SP. Initial owner funds are immediately staked.
-
-The register function returns the address of the newly generated DSC. 
 
 **Update fee** ( 0-10000) (`changeServiceFee(int newServiceFee)`) - sets the new service fee. It is a decimal that represents the fraction of rewards taken as a fee. The fee range is restricted by 2 system-level constants: `minServiceFee` and `maxServiceFee`, which themselves may be between 0 and 10000.
 
