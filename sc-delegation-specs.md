@@ -117,7 +117,7 @@ Let’s say after 1 epoch the nodes of the DSC gathered 100 eGold as rewards. As
 
 ## Constants
 * Registration deposit: 1250 eGold
-* Min. and max. service fee: 0 and 1
+* Min. and max. service fee: 0 and 10000 (meaning 0%-100%)
 * Min. delegation: 10 eGold
 
 ## Variables
