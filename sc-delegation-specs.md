@@ -88,9 +88,9 @@ If a user decided to withdraw from the DSC this process involves 2 steps:
 If SP does not want node deallocation to happen, he can add missing funds until the end of epoch. The SP can avoid deallocation by keeping always and extra buffer in the top-up part of the ASC.
 SP can withdraw the deposit when there are no active nodes. The DSC is accepting delegators' stake if the minimum of SP funds are still in the DSC. 
 
-**Withdraw or un-bond:** (`withDraw`) - after successful un-delegate and 10 epochs have passed the eGold can be withdrawn through a transaction which interacts with the DSC. The DSC will call ASC `unBondTokensWithNodes(value)` which will give the requested ammount. This will return all the withdrawable tokens together for the given delegator.
+**Withdraw or un-bond:** (`withDraw`) - after successful un-delegate and 10 epochs have passed the eGold can be withdrawn through a transaction which interacts with the DSC. The DSC will call ASC `unBondTokensWithNodes(value)` which will give the requested amount. This will return all the withdrawable tokens together for the given delegator.
  
-**How to Delegate:** send appropriate transaction(s) to the DSP(s) corresponding to the desired SP(s) (basically choose the desired SPs and the amounts of eGold to delegate to each). Minimum amount to delegate is 10 eGold.
+**How to Delegate:** (`delegate`) send appropriate transaction(s) to the DSP(s) corresponding to the desired SP(s) (basically choose the desired SPs and the amounts of eGold to delegate to each). Minimum amount to delegate is 10 eGold.
 
 **Claim rewards** (`claimRewards`)- Every user who delegated can claim the currently accumulated rewards for his account. A transaction has to be sent to the DSC with the “claim”. At processing time, it is calculated how many rewards should the account get, by calculating the difference between the last time the claim was called and the current nonce, calculating the total earned rewards by the SP on that time period. The service fee is taken out and the rest is sent to the user. Only the account that delegated can claim the rewards (same public key). A separate claim transaction needs to be sent to the DSC of each separate SP to which a user delegated.
 
