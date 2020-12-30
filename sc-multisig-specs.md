@@ -15,7 +15,7 @@ Thus, essentially the multisig SC (we will refer to it, from now on, as MSC) ena
 On-chain multisig wallets are made possible by the fact that smart contracts can call other smart contracts. To execute a multisig transaction the flow would be:
 
 * A proposer or board member proposes an action.
-* The proposed action receives a unique id/hash.
+* The proposed action receives an unique id/hash.
 * N board members are notified (off-chain) to review the action with the specific id/hash.
 * M out of N board members sign and approve the action.
 * Any proposer or board member “performs the action”.
@@ -55,7 +55,7 @@ The types of internal actions should be the following:
 * Add a proposer.
 * Remove a proposer.
 * Change multisig contract owner (might be relevant for upgrading the MSC).
-* Pay functions - by default we recommend the MSC to not be set up as payable and any deposit or send transaction of eGLD or ESDT towards the MSC will need to call the desired pay function (if a transaction is not a call to these 2 functions then it is rejected immediately and the value is sent back to original sender): Deposit and/or Send
+* Pay functions - by default we recommend the MSC to not be set up as a payable SC and any deposit or send transaction of eGLD or ESDT towards the MSC will need to call the desired pay function (if a transaction is not a call to these 2 functions then it is rejected immediately and the value is sent back to original sender): Deposit and/or Send. By making the MSC not a payable MSC we reduce the risk of users sending into the MSC funds that then are locked in the MSC or need to be manually send back to the user (in case of a mistake). By making the MSC not a payable MSC it also means that any deposit or send transaction needs to explicitly call the deposit or send function of the MSC.
 
 Any external and internal action will follow these steps and process:
 
@@ -63,7 +63,7 @@ Any external and internal action will follow these steps and process:
 * **View action:** the board members need to see the action proposed before they approve it.
 * **Sign action:** board members are allowed to sign. We might add an expiration date until board members can sign (until block x…).
 * **Un-sign action:** board members are allowed to un-sign, i.e. to remove their signature from an action. Actions with 0 signatures are cleared from storage. This is to allow mistakes to be cleared.
-* **Perform action (by id/hash)** - can be activated by proposers or board members. It is successful only if enough signatures are present from the board members. Whoever calls “perform action” needs to provide any eGLD required by the target, as well as to pay for gas.
+* **Perform action (by id/hash)** - can be activated by proposers or board members. It is successful only if enough signatures are present from the board members. Whoever calls “perform action” needs to provide any eGLD required by the target, as well as to pay for gas. If there is a move balance kind of action, who calls the action pays the gas and the amount to be moved is taken from MSC balance. But the gas is always taken from the balance of the one who creates the "perform action" transaction.
 
 Also the following view functions will be available:
 * **Count pending Actions:** returns the number of existing Actions.
@@ -74,6 +74,8 @@ Also the following view functions will be available:
 There are 2 ways to do it:
 * Provide all board member addresses and the number of required signatures directly in the constructor.
 * Deployer deploys with just herself on the board and required signatures = 1. Then adds all other N-1 signers and sets required signatures to M. This works, but requires many transactions, so the constructor-only approach might be preferred.
+
+MSC is a deployable SC written in Rust and compiled in WASM.
 
 ## Conclusion
 
