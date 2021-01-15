@@ -22,7 +22,7 @@ Because gas still has to be paid for any transaction, we introduce the concept o
 
 On the user side, sending a meta-transaction is similar to sending a standard transaction (from, to, value ... and signature) except that instead of sending it directly to the Elrond blockchain, it sends the meta-transaction to a third party (the relayer) who will take care of the gas.
 
-One of the first dApps which needs this kind of transactions is Maiar: the official Elrond mobile wallet app. When a user registers an account on Maiar, a new or already existing Elrond address: erd1… is mapped on the Elrond blockchain to the user’s mobile phone number. The mapping process involves several transactions on Elrond blockchain, meta-transactions that from the user perspective are done by Maiar and incur for the user zero fees. More info about the mobile phone attestation and mapping process can be found here.
+One of the first dApps which needs this kind of transactions is Maiar: the official Elrond mobile wallet app. When a user registers an account on Maiar, a new or already existing Elrond address: erd1… is mapped on the Elrond blockchain to the user’s mobile phone number. The mapping process involves several transactions on Elrond blockchain, meta-transactions that from the user perspective are done by Maiar and incur for the user zero fees.
 
 On Maiar, a user can also choose to create a friendly username: @herotag, that is associated with his eGold (erd1…) address. The @herotag is registered on Elrond blockchain and the registration can be done through meta-transactions. This service is known as DNS service on the Elrond blockchain.
 
@@ -31,9 +31,9 @@ Furthermore, the Elrond Standard Digital Token (ESDT) is in dire need of this fu
 The above mentioned use cases are just a few examples where meta-transactions are needed by removing the friction for users. It is up to developers to integrate this type of transactions and experiment the best onboarding experiences and different other approaches.
 
 ## Flow example 
-* Alice wants to send some stablecoins directly to Bob: $10 as USDt. They both have accounts on Elrond blockchain but Alice does not have eGold. She has only USDt in the form of stablecoins.
+* Alice wants to send some stablecoins directly to Bob: $10 as USDt. They both have accounts on Elrond blockchain but Alice does not have eGold. She has only USDT in the form of stablecoins.
 
-* Alice opens the wallet and signs a message that she wants to send $10 to Bob, but without any gas, because the gasPrice will be supported by a relayer.
+* Alice opens the wallet and signs a message that she wants to send $10 to Bob, but without any fee, because the fee will be supported by a relayer.
 
 * The message signed by Alice must now be wrapped into a real transaction. The wallet creates a real transaction where the SENDER is the GASLESS TX relayer (this account has eGold), and the receiver is the ADDRESS of Alice (the relayer sends to ALICE the gas and from that the inner transaction of Alice those 10$ goes to Bob). This way, the transaction contains Alice’s signed message, describing the transfer of $10 to Bob, but the gas for this transaction will be paid by the relayer.
 
@@ -90,11 +90,11 @@ After signing this transaction, the user sends the signed transaction, through t
 
 ## Protocol and Smart Contracts interactions
 
-The meta-transaction will start its journey towards execution in the shard where the relayer is located (relayer systems probably will use at least one relayer account in each shard, to avoid cross-shard latencies). The meta-transaction is verified by the interceptors (validators’ client software basically) at first: after seeing that the transaction is of type relayedTX, the interceptor can easily verify the validity and integrity of the inner transaction (marshalized and signed by the user). If valid, it will be added to the data pool. Upon processing the transaction, the whole transaction fee will be taken out of the relayers balance. The inner transaction is decoded and this transaction (the one signed by the user) will be executed according to the information there. First we translate the inner transaction into a smart contract result and then it continues execution of the inner transaction, which starts from Alice.
+The meta-transaction will start its journey towards execution in the shard where the relayer is located (relayer systems probably will use at least one relayer account in each shard, to avoid cross-shard latencies). The meta-transaction is verified by the interceptors (validators’ client software basically) at first: after seeing that the transaction is of type relayedTX, the interceptor can easily verify the validity and integrity of the inner transaction (marshalized and signed by the user). If valid, it will be added to the data pool. Upon processing the transaction, the whole transaction fee will be taken out of the relayer's balance. The inner transaction is decoded and this transaction (the one signed by the user) will be executed according to the information there. First we translate the inner transaction into a smart contract result and then it continues execution of the inner transaction, which starts from Alice.
 
 There is an extra verification for the amount of gas which must keep the next invariant:
 relayedTx.GasLimit == innerTx.GasLimit + computeGasCostOf(relayedTx)
-computeGasCostOf(relayedTx) = 50.000 + DataCopyPerByte * len(relayedTx.Data)
+computeGasCostOf(relayedTx) = 50000 + DataCopyPerByte * len(relayedTx.Data)
 
 If the relayer is in another shard then the user, the processing in the current shard stops here and the meta-transaction will go to the destination shard as the normal cross shard processing goes. When the transaction reaches the shard where the user is, it will verify if the nonce of the inner transaction is correct (must keep invariant of innerTx.nonce == userAccount.nonce) as this is the replay attack protection (the same inner transaction cannot be processed 2 times). The protocol will translate the inner transaction into a smart contract result whose SENDER is the user and will continue the processing of that as usual. 
 
