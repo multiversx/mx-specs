@@ -60,8 +60,8 @@ ESDT tokens are issued via a request to the Metachain, which is a transaction su
 IssuanceTransaction {
     Sender: <account address of the token manager>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000 (5 eGLD)
-    GasLimit: 50000000
+    Value: 50000000000000000 # (0.05 EGLD)
+    GasLimit: 60000000
     Data: "issue" +
           "@" + <token name in hexadecimal encoding> +
           "@" + <token ticker in hexadecimal encoding> +
@@ -69,14 +69,16 @@ IssuanceTransaction {
           "@" + <number of decimals in hexadecimal encoding>
 }
 ```
+Our initial proposal is the issuance cost to be 0.05 EGLD. Feedback and suggestions from the community is more than welcome.
+
 Optionally, other properties can be set when issuing a token. Example:
 
 ```
 IssuanceTransaction {
     Sender: <account address of the token manager>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000 (5 eGLD)
-    GasLimit: 50000000
+    Value: 50000000000000000 # (0.05 EGLD)
+    GasLimit: 60000000
     Data: "issue" +
           "@" + <token name in hexadecimal encoding> +
           "@" + <token ticker in hexadecimal encoding> +
@@ -88,7 +90,8 @@ IssuanceTransaction {
           "@" + <"canMint" hexadecimal encoded> + "@" + <"true" or "false" hexadecimal encoded> +
           "@" + <"canBurn" hexadecimal encoded> + "@" + <"true" or "false" hexadecimal encoded> +
           "@" + <"canChangeOwner" hexadecimal encoded> + "@" + <"true" or "false" hexadecimal encoded> +
-          "@" + <"canUpgrade" hexadecimal encoded> + "@" + <"true" or "false" hexadecimal encoded>
+          "@" + <"canUpgrade" hexadecimal encoded> + "@" + <"true" or "false" hexadecimal encoded> +
+          "@" + <"canAddSpecialRoles" hexadecimal encoded> + "@" + <"true" or "false" hexadecimal encoded>
 }
 ```
 The receiver address erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u is a built-in system smart contract (not a VM-executable contract), which only handles token issuance and other token management operations, and does not handle any transfers. The contract will add a random string to the ticker thus creating the token identifier. The random string starts with “-” and has 6 more random characters. For example, a token identifier could look like ALC-6258d2.
@@ -120,8 +123,8 @@ For example, a user named Alice wants to issue 4091 tokens called "AliceTokens" 
 IssuanceTransaction {
     Sender: erd1sg4u62lzvgkeu4grnlwn7h2s92rqf8a64z48pl9c7us37ajv9u8qj9w8xg
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000
-    GasLimit: 50000000
+    Value: 50000000000000000 # (0.05 EGLD)
+    GasLimit: 60000000
     Data: "issue" +
           "@416c696365546f6b656e73" +
           "@414c43" +
@@ -141,7 +144,7 @@ TransferTransaction {
     Sender: <account address of the sender>
     Receiver: <account address of the receiver>
     Value: 0
-    GasLimit: 250000
+    GasLimit: 500000
     Data: "ESDTTransfer" +
           "@" + <token identifier in hexadecimal encoding> +
           "@" + <value to transfer in hexadecimal encoding>
@@ -161,7 +164,7 @@ TransferTransaction {
     Sender: erd1sg4u62lzvgkeu4grnlwn7h2s92rqf8a64z48pl9c7us37ajv9u8qj9w8xg
     Receiver: erd1spyavw0956vq68xj8y4tenjpq2wd5a9p2c6j8gsz7ztyrnpxrruqzu66jx
     Value: 0
-    GasLimit: 250000
+    GasLimit: 500000
     Data: "ESDTTransfer" +
           "@414c432d363235386432" +
           "@0c"
@@ -193,7 +196,7 @@ TransferWithCallTransaction {
     Sender: <account address of the sender>
     Receiver: <account address of the smart contract>
     Value: 0
-    GasLimit: 250000 + <an appropriate amount for the method call>
+    GasLimit: 500000 + <an appropriate amount for the method call>
     Data: "ESDTTransfer" +
           "@" + <token identifier in hexadecimal encoding> +
           "@" + <value to transfer in hexadecimal encoding> +
@@ -219,8 +222,9 @@ The properties are:
 * canPause - the token manager may prevent all transactions of the token, apart from minting and burning
 * canFreeze - the token manager may freeze the token balance in a specific account, preventing transfers to and from that account
 * canWipe - the token manager may wipe out the tokens held by a frozen account, reducing the supply
-canChangeOwner - token management can be transferred to a different account
+* canChangeOwner - token management can be transferred to a different account
 * canUpgrade - the token manager may change these properties
+* canAddSpecialRoles - assign a specific role
 
 ## NFT and SFT Tokens
 
@@ -306,9 +310,9 @@ Optionally, the properties can be set when issuing a token. Example:
 IssuanceTransaction {
     Sender: <account address of the token manager>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000 (5 eGLD)
+    Value: 50000000000000000 (0.05 EGLD)
     GasLimit: 60000000
-    Data: "issueNonFungible" +
+    Data: "issueSemiFungible" +
           "@" + <token name in hexadecimal encoding> +
           "@" + <token ticker in hexadecimal encoding> +
           "@" + <"canFreeze" hexadecimal encoded> + "@" + <"true" or "false" hexadecimal encoded> +
@@ -331,7 +335,7 @@ Token Ticker:
 * alphanumeric UPPERCASE only
 
 ### Issuance examples
-For example, a user named Alice wants to issue an ESDT called "AliceTokens'' with the ticker "ALC". The issuance transaction would be:
+For example, a user named Alice wants to issue an ESDT called "AliceTokens" with the ticker "ALC". The issuance transaction would be:
 ```
 IssuanceTransaction {
     Sender: erd1sg4u62lzvgkeu4grnlwn7h2s92rqf8a64z48pl9c7us37ajv9u8qj9w8xg
@@ -343,14 +347,19 @@ IssuanceTransaction {
           "@414c43" +
 }
 ```
-Once this transaction is processed by the Metachain, Alice becomes the designated manager of AliceTokens, and is granted a balance of 4091 AliceTokens, to do with them as she pleases. She can increase the total supply of tokens at a later time if needed. For more operations available to ESDT token managers, see ESDT token management.
+Once this transaction is processed by the Metachain, Alice becomes the designated manager of AliceTokens. In case of NFTs and SFTs Alice does not need to mint any tokens, but she will need to register a ticker so that she receives the tokenID. She can create and add quantity later using ESDTNFTCreate. For more operations available to ESDT token managers, see [ESDT-Token management](#esdt-token-management)
 
 ### Roles
 In order to be able to perform actions over a token, one needs to have roles assigned. The existing roles are:
 
-* ESDTRoleNFTCreate : this role allows one to create a new NFT/SFT
-* ESDTRoleNFTAddQuantity : this role allows one to add quantity of a specific NFT/SFT
-* ESDTRoleNFTBurn : this role allows one to burn quantity of a specific NFT/SFT
+For NFT:
+* ESDTRoleNFTCreate : this role allows one to create a new NFT
+* ESDTRoleNFTBurn : this role allows one to burn quantity of a specific NFT
+
+For SFT:
+* ESDTRoleNFTCreate : this role allows one to create a new SFT
+* ESDTRoleNFTBurn : this role allows one to burn quantity of a specific SFT
+* ESDTRoleNFTAddQuantity : this role allows one to add quantity of a specific SFT
 
 ### Assigning roles
 
@@ -444,7 +453,7 @@ Let's see a complete flow of creating and transferring a Semi Fungible Token.
 {
     Sender: <your address>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000  # 5 eGLD
+    Value: 50000000000000000 # (0.05 EGLD)
     GasLimit: 60000000
     Data: "issueSemiFungible" +
           "@416c696365546f6b656e73" + # AliceTokens
