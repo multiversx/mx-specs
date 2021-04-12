@@ -352,6 +352,10 @@ Once this transaction is processed by the Metachain, Alice becomes the designate
 ### Roles
 In order to be able to perform actions over a token, one needs to have roles assigned. The existing roles are:
 
+For ESDT:
+* ESDTRoleLocalMint: this allow minting new tokens at the account
+* ESDTRoleLocalBurn: this allow burning tokens at the account
+
 For NFT:
 * ESDTRoleNFTCreate : this role allows one to create a new NFT
 * ESDTRoleNFTBurn : this role allows one to burn quantity of a specific NFT
