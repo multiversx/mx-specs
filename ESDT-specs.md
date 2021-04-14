@@ -460,7 +460,7 @@ TransferTransaction {
     Sender: <account address of the sender>
     Receiver: <same as sender>
     Value: 0
-    GasLimit: 500000 + length of Data field
+    GasLimit: 1000000 + length of Data field
     Data: "ESDTNFTTransfer" +
           "@" + <token identifier in hexadecimal encoding> +
           "@" + <the nonce after the NFT creation in hexadecimal encoding> + 
@@ -539,7 +539,7 @@ Note that the nonce is very important when creating an NFT. You must save the no
     Sender: <your address>
     Receiver: <same as sender>
     Value: 0
-    GasLimit: 500000 + length of Data field
+    GasLimit: 1000000 + length of Data field
     Data: "ESDTNFTTransfer" +
           "@414c432d317132773365" +   # previously fetched token identifier
           "@" + <the nonce saved above in hexadecimal encoding> + 
