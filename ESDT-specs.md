@@ -23,6 +23,7 @@ v1.0.0.
 * [Issuance of Semi-Non-Fungible Tokens (SFT)](#issuance-of-semi-non-fungible-tokens-sft)
 * [Parameters format](#parameters-format-1)
 * [Issuance examples](#issuance-examples-1)
+* [NFT/SFT fields](#nft-and-sft-fields)  
 * [Roles](#roles)
 * [Assigning roles](#assigning-roles)
 * [Creation of an NFT](#creation-of-an-nft)
@@ -230,16 +231,7 @@ The properties are:
 
 The Elrond protocol introduces native NFT support by adding metadata and attributes on top of the already existing ESDT (please read the [specifications](#specification) for fungible ESDT tokens to get familiar with the standard). This way, one can issue a semi-fungible token or a non-fungible token which is quite similar to an ESDT, but has a few more attributes, such as a changeable URI. 
 
-Once owning a quantity of a NFT/SFT, users will have their data store directly under their account, inside the trie. All the fields available inside a NFT/SFT token are:
-* attributes
-* balance
-* creator
-* hash
-* name
-* properties
-* royalties
-* tokenIdentifier
-* URIs
+Once owning a quantity of a NFT/SFT, users will have their data store directly under their account, inside the trie. All the fields available inside a NFT/SFT token can be found [here](#nft-and-sft-fields).
 
 The flow of issuing and transferring non-fungible or semi-fungible tokens is:
 
@@ -261,7 +253,7 @@ One has to perform an issuance transaction in order to register the token. Non-F
 IssuanceTransaction {
     Sender: <account address of the token manager>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000 (5 eGLD)
+    Value: 50000000000000000 (0.05 EGLD)
     GasLimit: 60000000
     Data: "issueNonFungible" +
           "@" + <token name in hexadecimal encoding> +
@@ -274,7 +266,7 @@ Optionally, the properties can be set when issuing a token. Example:
 IssuanceTransaction {
     Sender: <account address of the token manager>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000 (5 eGLD)
+    Value: 50000000000000000 (0.05 EGLD)
     GasLimit: 60000000
     Data: "issueNonFungible" +
           "@" + <token name in hexadecimal encoding> +
@@ -296,7 +288,7 @@ One has to perform an issuance transaction in order to register the token. Semi 
 IssuanceTransaction {
     Sender: <account address of the token manager>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
-    Value: 5000000000000000000 (5 eGLD)
+    Value: 50000000000000000 (0.05 EGLD)
     GasLimit: 60000000
     Data: "issueSemiFungible" +
           "@" + <token name in hexadecimal encoding> +
@@ -353,8 +345,8 @@ Once this transaction is processed by the Metachain, Alice becomes the designate
 In order to be able to perform actions over a token, one needs to have roles assigned. The existing roles are:
 
 For ESDT:
-* ESDTRoleLocalMint: this allow minting new tokens at the account
-* ESDTRoleLocalBurn: this allow burning tokens at the account
+* ESDTRoleLocalMint: this role allows minting new tokens at the account
+* ESDTRoleLocalBurn: this role allows burning tokens at the account
 
 For NFT:
 * ESDTRoleNFTCreate : this role allows one to create a new NFT
@@ -387,6 +379,31 @@ RolesAssigningTransaction {
 
 For example, ESDTRoleNFTCreate = 45534454526f6c654e4654437265617465
 
+### NFT and SFT fields
+
+Below you can find the fields involved when creating an NFT.
+
+**NFT Name**
+- The name of the NFT or SFT
+
+**Quantity**
+- The quantity of the token. If NFT, it must be `1`
+
+**Royalties**
+- Allows the creator to receive royalties for any transaction involving their NFT
+- Base format is a numeric value between 0 an 10000 (0 meaning 0% and 10000 meaning 100%)
+
+**Hash**
+- Arbitrary field that should contain the hash of the NFT metadata.
+
+**Attributes**
+- Arbitrary field that should contain a set of attributes in the format desired by the creator
+
+**URI(s)**
+- Minimum one field that should contain the `Uniform Resource Identifier`. Can be a URL to a media file or something similar.
+
+Note that each argument must be encoded in hexadecimal format with an even number of characters.
+
 ### Creation of an NFT
 
 A single address can own the role of creating an NFT for an ESDT token. This role can be transferred by using the ESDTNFTCreateRoleTransfer function.
@@ -397,7 +414,7 @@ NFTCreationTransaction {
     Sender: <address with ESDTRoleNFTCreate role>
     Receiver: <same as sender>
     Value: 0
-    GasLimit: 60000000
+    GasLimit: 6000000 + Additional gas (see below)
     Data: "ESDTNFTCreate" +
           "@" + <token identifier in hexadecimal encoding> +
           "@" + <initial quantity in hexadecimal encoding> +
@@ -411,6 +428,12 @@ NFTCreationTransaction {
 }
 ```
 
+Additional gas refers to:
+- Transaction payload cost: Data field length * 1500 (GasPerDataByte = 1500)
+- Storage cost: Size of NFT data * 50000 (StorePerByte = 50000)
+
+Note that because NFTs are stored in accounts trie, every transaction involving the NFT will require a gas limit depending on NFT data size.
+
 ### Transfer NFT Creation Role
 
 This role can be transferred only if the canTransferNFTCreateRole property of the token is set to true.
@@ -421,7 +444,7 @@ TransferCreationRoleTransaction {
     Sender: <address of the current creation role owner>
     Receiver: erd1qqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqzllls8a5w6u
     Value: 0
-    GasLimit: 500000 + length of Data field
+    GasLimit: 60000000 + length of Data field
     Data: "ESDTNFTCreateRoleTransfer" +
           "@" + <token identifier in hexadecimal encoding> +
           "@" + <the address to transfer the role from in hexadecimal encoding> + 
