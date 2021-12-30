@@ -155,7 +155,7 @@ TransferTransaction {
 While this transaction may superficially resemble a Smart Contract call, it is not. The differences are the following:
 
 * the receiver can be any account (which may or may not be a smart contract)
-* the GasLimit must be set to the value required by the protocol for ESDT transfers, namely 250000
+* the GasLimit must be set to the value required by the protocol for ESDT transfers, namely 500000
 * the Data field contains what appears to be a smart contract method invocation with arguments, but this invocation never reaches the VM: the string ESDTTransfer is reserved by the protocol and is handled as a built-in function, not as a smart contract call
 
 Following the example from earlier, assuming that the token identifier is 414c432d363235386432, a transfer from Alice to another user, Bob, would look like this:
