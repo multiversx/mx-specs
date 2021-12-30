@@ -172,7 +172,7 @@ TransferTransaction {
 }
 ```
 
-Using the transaction in the example above, Alice will transfer 12 AliceTokens to Bob.
+Using the transaction in the example above, Alice will transfer 0.000012 AliceTokens to Bob. Note that this is not 12(0c) tokens, as we have 6 decimal places. 
 
 ### Transfers to a Smart Contract
 
