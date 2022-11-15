@@ -18,7 +18,8 @@ The project has to make a pull-request in the current repository, where he adds 
 folder by filling in the current template document. The name of the document should be the name of the project.
 
 Note: the project will lose the transfer role after you make an upgrade on the contract. The projects have to make a 
-new pull request, where he updates the new code of the smart contract and explains the changes.
+new pull request, where they update projects whitelist request document with the new code of the smart contract and 
+explains the changes.
 
 ## Name of project
 [Fill in]
