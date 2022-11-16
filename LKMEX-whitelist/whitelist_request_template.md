@@ -1,4 +1,4 @@
-# Template to request LKMEX 'transferRole'
+# Template to request LKMEX `transferRole`
 
 ## Transferability
 
@@ -20,7 +20,7 @@ folder by filling in the existing template document. The name of the document sh
 Note: Projects will lose the transfer role after upgrading the contract. You need to make a new pull request, where 
 new code updates brought to the smart contract must be explained and motivated.
 
-Projects can also lose their 'transferRole' status if the Smart Contract is being used in ways that go against LKMEX 
+Projects can also lose their `transferRole` status if the Smart Contract is being used in ways that go against LKMEX 
 principles. Questionable activities will be reviewed by the MultiversX team and any Project or Smart Contract found in 
 breach of the rules will automatically lose their transferRole status.
 
