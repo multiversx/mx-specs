@@ -24,6 +24,18 @@ Projects can also lose their `transferRole` status if the Smart Contract is bein
 principles. Questionable activities will be reviewed by the MultiversX team and any Project or Smart Contract found in 
 breach of the rules will automatically lose their transferRole status.
 
+Whitelisted projects will be given a transferRole to the wrappedLKMEX tokenID, which is a token that does not 
+have energy and is used only by whitelisted projects. 
+
+The whitelisted projects will need to wrap the LKMEX they want to deposit or use. By wrapping it, the LKMEX will 
+temporarily “lose” its energy but the energy can be recovered and regained by unWrap it back.
+
+Projects will be able to use the wrappedLKMEX to deposit and use in the whitelisted Smart Contracts. Users who will
+get/claim wrappedLKMEX and will need to unWrap it in order to gain its original energy and convert it back  to LKMEX v2 
+in order to enter liquidity or farms.
+
+wrappedLKMEX does not have the benefits of the LKMEX v2, only after unwrapping you gain all the benefits.
+
 ## Name of the project
 [Fill in]
 
