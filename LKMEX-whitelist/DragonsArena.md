@@ -59,4 +59,4 @@ Transfer LKMEX token to specific wallets with specific amount.
 100-300
 
 ## Average LKMEX used during the previous month
-8,000,000 LKMEX
+8,000,000 LKMEX - when we had only AR Connect for rewards. This week, since we've opened our staking app, we've distributed 7,000,000 LKMEX (This means we'll distribute around 28-30M LKMEX / month)
