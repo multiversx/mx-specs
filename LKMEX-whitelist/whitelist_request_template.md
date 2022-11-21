@@ -9,8 +9,8 @@ More info https://linktr.ee/thefrizzyboy
 ## Purpose
 Our CDO was created early this year and we send our Discord verified holders monthly rewards in LKMEX.
 
-To farm LKMEX on the DEX we use this address 
-
+To farm LKMEX on the DEX we have been using this address 
+https://explorer.elrond.com/accounts/erd14g90e39lylknqt32uwk0dde0u6fdr95vvk7wg5d89w9myd5mn5lq3zl7e2
 and for distribution we use this address
 https://explorer.elrond.com/accounts/erd195sm9czu7ufa9373plj4ku5ny2vne0jt0gquu4m8fr0n3nw9gsgqagatj2
 
