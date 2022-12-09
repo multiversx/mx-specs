@@ -37,22 +37,27 @@ in order to enter liquidity or farms.
 wrappedLKMEX does not have the benefits of the LKMEX v2, only after unwrapping you gain all the benefits.
 
 ## Name of the project
-[Fill in]
+Elrond Castle
 
 ## Description of the project
-[What does the project do?]
+Elrond castle is a P2E in which the objective is to develop its village and its people in order to have the most powerful kingdom (wealth and army). For this, you have to collect the currency of the kingdom, the $ECCU. This currency is given every day by the buildings that the holders own. There are 4 different building rarities with different $ECCU donations. Keep your $ECCU safe, it will be very useful to improve your kingdom!
 
 ## Purpose
-[Why does the project need a transfer role for LKMEX?]
+We add a first feature for our bank which allows holders to farm LKMEX. That's a way to rewards early builders on our project.
 
 ## Address of Smart Contract
-[address][link on explorer]
+SC address:erd1qqqqqqqqqqqqqpgqfz40qhen27r7scvgmwpwfrlt0y08ec73775szcu8zs
+Explorer link: https://explorer.elrond.com/accounts/erd1qqqqqqqqqqqqqpgqfz40qhen27r7scvgmwpwfrlt0y08ec73775szcu8zs
 
 ## Smart Contract Code
-[Post link to github]
+I added sasurobert to the repository
 
 ## Description for every Smart Contract functionality
-[Post link to github]
+$ECCU Deposit
+LKMEX Claim
 
 ## Number of users
+100+ users
+
 ## Average LKMEX used during the previous month
+5M+ LKMEX
