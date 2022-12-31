@@ -1,30 +1,43 @@
-Name of project:
+## Name of the project
+Comverse
 
-Combased (Combeys, Combots)
+## Description of the project
+Combased project is web3 agency and also a leader in e-commerce space. Read more here https://combased.io
 
-https://explorer.elrond.com/nfts/COMBEYS-bc640d
+Also check our previous PR:
+https://github.com/ElrondNetwork/elrond-specs/pull/29
 
-Description of the project: 
+## Purpose
+We send to our holders monthly rewards with LKMEX, UTK, RIDE and EGLD.
 
-We are the first e-commerce project on Elrond and official Shopify partner. We provide quality blockchain services as well. Also we have our NFT collections: Combeys, Combots
+To farm LKMEX on the dex we use our CDO wallet, which takes 50% of all royalties and earnings from our services. We provide web3 development services and sell our Shopify apps.
 
-Purpose: 
+To qualify all eligible addresses we use our first open source script, which was actually instrumental in developing Elrond ecosystem.
 
-We have a transparent CDO wallet, which has LP for farming LKMEX. That LP is increased from our e-commerce and web3 development services revenue. 
+https://github.com/Combased/elrond-lkmex-distribution
 
-Address of Smart Contract:
 
-erd1qqqqqqqqqqqqqpgqss2kwutkwdvpyey60u7felml0jmrqp6hmkdqadcl5z
+## Address of Smart Contract
+erd1qqqqqqqqqqqqqpgq9esqwrwuk7fsdums5nz2rczqweu0lyudmkdqudmg2r
 
-Smart Contract Code
-N/A
-Still in the development. We might use some available fork, because we were the first project open sourcing our LKMEX distribution script. We would like to keep the logic. Our script is here: https://github.com/Combased/elrond-lkmex-distribution
-At the moment we need to get WL and then use the available resources to finish our SC.
+Deployed on mainnet
 
-LKMEX used last month: 
+## Smart Contract Code
+https://github.com/xdevguild/sc-multi-sender-rs
+This is advised by the xdevguild and perfectly suits our needs. We are against staking, since it requires to send NFTs to particular address, which is less secure then simply registering them with our script.
 
-In October of 2022, we distributed ~30M LKMEX 
 
-Number of Users: 
+## Description for every Smart Contract functionality
+The Multi Send Esdt function only accepts ESDT as payment. It receives the following arguments:
 
-In October 2022, we distributed to ~310 holders.
+The token identifier of the ESDT you want to send
+One address you want to send to
+The amount you want to send to the address
+You can add as many addresses and amounts as you want in the arguments but it must remain in order : Address A, Amount A.
+
+## Number of users
+On the last distribution we sent LKMEX to 300+ wallets (holders)
+
+## Average LKMEX used during the previous month
+On the last distribution we sent around 18,200,000 LKMEX
+
