@@ -38,10 +38,10 @@ wrappedXMEX does not have the benefits of the XMEX. Only after unwrapping you ga
 
 ### Usage specs
 
-rewards_depositer_account - user account from project side that should deposit rewards in the project's distribution smart contract; this should NOT be a smart contract
-distribution_sc - project's distribution smart contract that will receive transfer role for wrappedXMEX
-xmex_wrapper_sc - xmex wrapper smart contract owned by xExchange owner entity
-user_account - end user account that claims and uses the distributed rewards
+- rewards_depositer_account - user account from project side that should deposit rewards in the project's distribution smart contract; this should NOT be a smart contract
+- distribution_sc - project's distribution smart contract that will receive transfer role for wrappedXMEX
+- xmex_wrapper_sc - xmex wrapper smart contract owned by xExchange owner entity
+- user_account - end user account that claims and uses the distributed rewards
 
 ```mermaid
 sequenceDiagram
