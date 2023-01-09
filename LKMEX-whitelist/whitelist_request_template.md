@@ -53,7 +53,7 @@ sequenceDiagram
     xmex_wrapper_sc-->>rewards_depositer_account: remove energy & transfer wXMEX
     rewards_depositer_account->>distribution_sc: deposit wXMEX
     user_account->>distribution_sc: claim wXMEX
-    rect rgb(191, 223, 255)
+    rect rgba(191, 223, 255, .1)
     note right of xmex_wrapper_sc: Integrated in xExchange
     user_account->>xmex_wrapper_sc: unwrapLockedToken wXMEX
     xmex_wrapper_sc-->>user_account: add energy & transfer XMEX
