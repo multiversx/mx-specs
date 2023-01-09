@@ -36,7 +36,7 @@ in order to enter liquidity or farms.
 
 wrappedXMEX does not have the benefits of the XMEX. Only after unwrapping you gain all the benefits.
 
-### Contract usage specs
+### Usage specs
 
 rewards_depositer_account - user account from project side that should deposit rewards in the project's distribution smart contract; this should NOT be a smart contract
 distribution_sc - project's distribution smart contract that will receive transfer role for wrappedXMEX
@@ -45,17 +45,21 @@ user_account - end user account that claims and uses the distributed rewards
 
 ```mermaid
 sequenceDiagram
-    participant rewards_depositer_account
+    actor rewards_depositer_account
     participant distribution_sc
     participant xmex_wrapper_sc
-    participant user_account
+    actor user_account
     rewards_depositer_account->>xmex_wrapper_sc: wrapLockedToken XMEX
-    xmex_wrapper_sc->>rewards_depositer_account: remove energy & transfer wXMEX
+    xmex_wrapper_sc-->>rewards_depositer_account: remove energy & transfer wXMEX
     rewards_depositer_account->>distribution_sc: deposit wXMEX
     user_account->>distribution_sc: claim wXMEX
+    rect rgb(191, 223, 255)
+    note right of xmex_wrapper_sc: Integrated in xExchange
     user_account->>xmex_wrapper_sc: unwrapLockedToken wXMEX
-    xmex_wrapper_sc->>user_account: add energy & transfer XMEX
+    xmex_wrapper_sc-->>user_account: add energy & transfer XMEX
+    end
 ```
+
 
 ## Name of the project
 [Fill in]
