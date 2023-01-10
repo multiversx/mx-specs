@@ -31,7 +31,7 @@ Furthermore, the MultiversX eStandard Digital Token (ESDT) is in dire need of th
 The above-mentioned use cases are just a few examples where meta-transactions are needed by removing the friction for users. It is up to developers to integrate this type of transactions and experiment the best onboarding experiences and different other approaches.
 
 ## Flow example 
-* Alice wants to send some stablecoins directly to Bob: $10 as USDt. They both have accounts on MultiversX blockchain but Alice does not have eGold. She has only USDT in the form of stablecoins.
+* Alice wants to send some stablecoins directly to Bob: $10 as USDT. They both have accounts on MultiversX blockchain but Alice does not have eGold. She has only USDT in the form of stablecoins.
 
 * Alice opens the wallet and signs a message that she wants to send $10 to Bob, but without any fee, because the fee will be supported by a relayer.
 
