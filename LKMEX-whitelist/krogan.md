@@ -10,7 +10,7 @@ Based on the rules, this is an acceptable behaviour as it's the classic reward s
 An example of usage in production: https://elrondnftswap.com/collection/EGLDRUSH-90a737 scroll down to "Weekly rewards" section.
 
 ## Address of Smart Contract
-https://explorer.elrond.com/accounts/erd1qqqqqqqqqqqqqpgqkg84sqdc3za05ce3r4nqqdpeqzx429k4we0s8wp0u2
+https://explorer.multiversx.com/accounts/erd1qqqqqqqqqqqqqpgqkg84sqdc3za05ce3r4nqqdpeqzx429k4we0s8wp0u2
 
 The contract has already 4175 transactions and large deposits of LKMEX.
 

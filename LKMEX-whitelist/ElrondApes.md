@@ -4,7 +4,7 @@ ElrondApes
 
 ## Description of the project
 
-ElrondApes is a collection of 10,000 uniques NFTs on the MultiverseX blockchain.
+ElrondApes is a collection of 10,000 uniques NFTs on the MultiversX blockchain.
 
 Website: https://elrondapes.com/
 
@@ -14,7 +14,7 @@ Our dApp (https://app.elrondapes.com/) currently provides a dashboard collection
 
 ## Address of Smart Contract
 
-https://explorer.elrond.com/accounts/erd1qqqqqqqqqqqqqpgq575mqgaqe4f53rqc5ssczkxtsx4fs26l3azq9zwkaw
+https://explorer.multiversx.com/accounts/erd1qqqqqqqqqqqqqpgq575mqgaqe4f53rqc5ssczkxtsx4fs26l3azq9zwkaw
 
 ## Smart Contract Code
 

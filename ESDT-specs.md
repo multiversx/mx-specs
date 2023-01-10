@@ -1,4 +1,4 @@
-# Elrond Standard Digital Tokens (ESDT)
+# eStandard Digital Tokens (ESDT)
 
 v1.0.0.
 
@@ -39,19 +39,19 @@ v1.0.0.
 A standard interface for fungible, non-fungible (NFT) and semi-fungible (SFT) tokens that allows issuance, management and transfer of tokens, without the need for Smart Contracts (such as ERC20). ESDT tokens have native in-protocol support, so transactions with ESDT tokens do not require a VM at all. In effect, this means that ESDT tokens are as fast and as scalable as the native eGold token itself.
 
 ## Motivation
-Elrond is a novel state sharded architecture. Moreover, Elrond offers a full Smart Contract development experience in such a way that Smart Contract developers do not need to know about sharding, address space, transaction broadcasting etc. 
+MultiversX is a novel state sharded architecture. Moreover, MultiversX offers a full Smart Contract development experience in such a way that Smart Contract developers do not need to know about sharding, address space, transaction broadcasting etc. 
 
-Running Smart Contracts is done through the Elrond VM, the fastest VM in the blockchain space that is running on WASM, is extra secure, has a built-in gas model, etc. On the other hand, we acknowledge that digital tokens such as stable coins will need to have the same scalability as the base layer protocol.
+Running Smart Contracts is done through the MultiversX VM, the fastest VM in the blockchain space that is running on WASM, is extra secure, has a built-in gas model, etc. On the other hand, we acknowledge that digital tokens such as stable coins will need to have the same scalability as the base layer protocol.
 
-With ESDT, we are proposing a novel token standard, where different digital tokens can work on top of the Elrond Network as fast as the native eGold token. This standard provides basic functionality to issue, manage, mint, burn, froze, transfer, etc. ESDT tokens.
+With ESDT, we are proposing a novel token standard, where different digital tokens can work on top of the MultiversX Network as fast as the native eGold token. This standard provides basic functionality to issue, manage, mint, burn, froze, transfer, etc. ESDT tokens.
 
 Users also do not need to worry about sharding when transacting ESDT tokens, because the protocol employs the same handling mechanisms for ESDT transactions across shards as the mechanisms used for the eGLD native token. Sharding is therefore automatically handled and invisible to the user.
 Technically, the balances of ESDT tokens held by an Account are stored directly under the data trie of that Account. It also implies that an Account can hold balances of any number of ESDT tokens, in addition to the native eGold balance. The protocol guarantees that no Account can modify the storage of ESDT tokens, neither its own nor of other Accounts.
-ESDT tokens can be issued, owned and held by any Account on the Elrond network, which means that both users and Smart Contracts have the same functionality available to them. Due to the design of ESDT tokens, Smart Contracts can manage tokens with ease, and they can even react to an ESDT transfer.
+ESDT tokens can be issued, owned and held by any Account on the MultiversX network, which means that both users and Smart Contracts have the same functionality available to them. Due to the design of ESDT tokens, Smart Contracts can manage tokens with ease, and they can even react to an ESDT transfer.
 
 ## Fungible Tokens
 ### Specification
-ESDT allows any tokens on Elrond network to be integrated by other applications and dApps: from wallets to decentralized exchanges.
+ESDT allows any tokens on MultiversX network to be integrated by other applications and dApps: from wallets to decentralized exchanges.
 
 ### Methods
 ### Issuance of fungible ESDT tokens
@@ -211,7 +211,7 @@ Sending a transaction containing both an ESDT transfer and a method call allows 
 
 ### ESDT token management
 
-The Account which submitted the issuance request for an ESDT token automatically becomes the manager of the token. The manager of a token has the ability to manage the properties, the total supply and the availability of a token. Because Smart Contracts are Accounts as well, a Smart Contract can also issue and own ESDT tokens and perform management operations by sending the appropriate transactions, as shown below. One possible use case for a Smart Contract to be the issuer and/or manager of an ESDT token is if there is the need for a [Multisg Smart Contract](https://github.com/ElrondNetwork/elrond-specs/blob/main/sc-multisig-specs.md).
+The Account which submitted the issuance request for an ESDT token automatically becomes the manager of the token. The manager of a token has the ability to manage the properties, the total supply and the availability of a token. Because Smart Contracts are Accounts as well, a Smart Contract can also issue and own ESDT tokens and perform management operations by sending the appropriate transactions, as shown below. One possible use case for a Smart Contract to be the issuer and/or manager of an ESDT token is if there is the need for a [Multisg Smart Contract](https://github.com/multiversx/mx-specs/blob/main/sc-multisig-specs.md).
 
 **Configuration properties of a fungible ESDT token**
 
@@ -229,7 +229,7 @@ The properties are:
 
 ## NFT and SFT Tokens
 
-The Elrond protocol introduces native NFT support by adding metadata and attributes on top of the already existing ESDT (please read the [specifications](#specification) for fungible ESDT tokens to get familiar with the standard). This way, one can issue a semi-fungible token or a non-fungible token which is quite similar to an ESDT, but has a few more attributes, such as a changeable URI. 
+The MultiversX protocol introduces native NFT support by adding metadata and attributes on top of the already existing ESDT (please read the [specifications](#specification) for fungible ESDT tokens to get familiar with the standard). This way, one can issue a semi-fungible token or a non-fungible token which is quite similar to an ESDT, but has a few more attributes, such as a changeable URI. 
 
 Once owning a quantity of a NFT/SFT, users will have their data store directly under their account, inside the trie. All the fields available inside a NFT/SFT token can be found [here](#nft-and-sft-fields).
 
@@ -241,7 +241,7 @@ The flow of issuing and transferring non-fungible or semi-fungible tokens is:
 * transfer quantity(es)
 
 ### Specification
-ESDT allows any tokens on Elrond network to be integrated by other applications and dApps: from wallets to decentralized exchanges.
+ESDT allows any tokens on MultiversX network to be integrated by other applications and dApps: from wallets to decentralized exchanges.
 
 ### Methods
 
@@ -555,5 +555,5 @@ Multiple custom tokens, having the same scalability and speed as the native toke
 ## History
 
 See also these discussions:
-* https://docs.elrond.com/developers/esdt-tokens/ 
-* https://docs.elrond.com/developers/nft-tokens/ 
+* https://docs.multiversx.com/tokens/esdt-tokens/ 
+* https://docs.multiversx.com/tokens/nft-tokens/

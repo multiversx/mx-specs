@@ -28,7 +28,7 @@ Note that the Delegation SC is a system smart contract; as such, its code is sto
 **Figure 1**
 
 *ASC keeps the data per staking provider. The total stake amount, total unstaked, number of nodes, list of nodes. The ASC calls the Staking Smart Contract (SSC) with BLSKey as input for actions.
-SSC keeps the data for every BLSKey - their status (staked, unstaked, waiting, jailed).  It can be called only by the Auction Smart Contract (ASC). Thus the SP has to work with the ASC which will call executeOnDestinationContext for interaction with SSC. More info [here](https://docs.elrond.com/validators/staking).
+SSC keeps the data for every BLSKey - their status (staked, unstaked, waiting, jailed).  It can be called only by the Auction Smart Contract (ASC). Thus the SP has to work with the ASC which will call executeOnDestinationContext for interaction with SSC. More info [here](https://docs.multiversx.com/validators/staking/staking/).
 Any communication between DSC and SSC is done through ASC. This generally includes staking/unstaking funds and managing nodes.*
 
 ## Roles and available actions
