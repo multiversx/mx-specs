@@ -7,11 +7,11 @@ the account where it is currently held. Some limited transfers for LKMEX will co
 economics paper for more details.
 
 Other services and products beyond xExchange can request transfer roles which will have to be authorized by governance 
-votes. Before the xExchange (Maiar DEX 2.0) launch, projects can submit a request to be whitelisted via Github.
+votes. Before the xExchange launch, projects can submit a request to be whitelisted via Github.
 
 We will consider eligible for transferRole only projects and smart contracts serving as catalysts for user adoption and 
 those who bring valuable use cases (for example, use cases that go against the principles outlined above, where LKMEX 
-rules are overridden, re-enabling selling or buying will not be eligible). After the xExchange (Maiar DEX 2.0) launch, 
+rules are overridden, re-enabling selling or buying will not be eligible). After the xExchange launch, 
 pre-whitelisted projects and SCs will potentially be revisited through a governance call.
 
 The project has to make a pull request in the current repository, where it adds a new file in the LKMEX-whitelist 

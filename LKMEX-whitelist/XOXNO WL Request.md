@@ -10,8 +10,8 @@ Our NFT Staking contract provides a single entry point for multiple creators and
 We are the only NFT Marketplace supporting trading with LKMEX, users list their NFT for a specific amount and other people can BID/BUY the specific NFT/SFT.  NFT trading in LKMEX is not going to affect the new economics or the price.
 
 Address of Smart Contract
-NFT Staking: https://explorer.elrond.com/accounts/erd1qqqqqqqqqqqqqpgqvpkd3g3uwludduv3797j54qt6c888wa59w2shntt6z
-NFT Marketplace: https://explorer.elrond.com/accounts/erd1qqqqqqqqqqqqqpgq6wegs2xkypfpync8mn2sa5cmpqjlvrhwz5nqgepyg8
+NFT Staking: https://explorer.multiversx.com/accounts/erd1qqqqqqqqqqqqqpgqvpkd3g3uwludduv3797j54qt6c888wa59w2shntt6z
+NFT Marketplace: https://explorer.multiversx.com/accounts/erd1qqqqqqqqqqqqqpgq6wegs2xkypfpync8mn2sa5cmpqjlvrhwz5nqgepyg8
 
 Smart Contract Code
 N/A
