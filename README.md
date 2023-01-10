@@ -1,2 +1,2 @@
-# elrond-specs
-Elrond specs documentation
+# mx-specs
+MultiversX specs documentation
