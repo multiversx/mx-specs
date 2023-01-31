@@ -2,15 +2,15 @@
 
 ## Summary
 
-All transactions on the Elrond blockchain must have sufficient gas in order to be processed, gas that is paid in eGold, the native token of the Elrond blockchain. Meta-transactions are probably best summarized through the effect they have: users can interact with the Elrond blockchain without holding and paying any eGold. 
+All transactions on the MultiversX blockchain must have sufficient gas in order to be processed, gas that is paid in eGold, the native token of the MultiversX blockchain. Meta-transactions are probably best summarized through the effect they have: users can interact with the MultiversX blockchain without holding and paying any eGold. 
 
 ## Abstract
 
-Forcing users to buy-and-hold eGold in order to register as an user of a dApp on Elrond blockchain (like Maiar for example) would be a terrible experience for just about everyone, especially for non-crypto users. This is the problem that meta-transactions attempt to solve.
+Forcing users to buy-and-hold eGold in order to register as an user of a dApp on MultiversX blockchain (like xPortal for example) would be a terrible experience for just about everyone, especially for non-crypto users. This is the problem that meta-transactions attempt to solve.
 
 The internet has created a "free-to-use" culture for most of its popular apps. If their decentralized counterparts are to replace them and gain traction, they should avoid raising a paywall, no matter how inexpensive, in front of its users.
 
-Meta-transactions, also referred to as gasless transactions or relayed transactions, is the common name for those transactions which consume no gas as eGold from the user’s perspective. However, all transactions on the Elrond blockchain must have sufficient gas - in order to protect the validators and avoid malicious DOS attacks - therefore it is required to add support for transactions that allow the usage of dApps without owning and paying eGold as gas, but which take the gas from a different source.
+Meta-transactions, also referred to as gasless transactions or relayed transactions, is the common name for those transactions which consume no gas as eGold from the user’s perspective. However, all transactions on the MultiversX blockchain must have sufficient gas - in order to protect the validators and avoid malicious DOS attacks - therefore it is required to add support for transactions that allow the usage of dApps without owning and paying eGold as gas, but which take the gas from a different source.
 
 Because gas still has to be paid for any transaction, we introduce the concept of relayer, which is the entity that pays for the gas on behalf of the users of a dApp. A meta-transaction process includes several steps: 
 
@@ -18,20 +18,20 @@ Because gas still has to be paid for any transaction, we introduce the concept o
 * this transaction is exactly like a normal transaction but instead of being send to the blockchain it is sent off-chain to the relayer
 * it is up to each relayer to put in place its own policy and strategy in regards with what transactions are accepted, from what source, frequency, anti-spam etc.
 * the relayer wrapps the signed transaction from the user into its own transaction by constructing and signing a meta-transaction; 
-* lastly, the Elrond protocol verifies if the inner user’s transaction is indeed signed by the user, is correctly constructed and whether it has the correct nonce. If these verifications pass, the meta-transaction is executed.
+* lastly, the MultiversX protocol verifies if the inner user’s transaction is indeed signed by the user, is correctly constructed and whether it has the correct nonce. If these verifications pass, the meta-transaction is executed.
 
-On the user side, sending a meta-transaction is similar to sending a standard transaction (from, to, value ... and signature) except that instead of sending it directly to the Elrond blockchain, it sends the meta-transaction to a third party (the relayer) who will take care of the gas.
+On the user side, sending a meta-transaction is similar to sending a standard transaction (from, to, value ... and signature) except that instead of sending it directly to the MultiversX blockchain, it sends the meta-transaction to a third party (the relayer) who will take care of the gas.
 
-One of the first dApps which needs this kind of transactions is Maiar: the official Elrond mobile wallet app. When a user registers an account on Maiar, a new or already existing Elrond address: erd1… is mapped on the Elrond blockchain to the user’s mobile phone number. The mapping process involves several transactions on Elrond blockchain, meta-transactions that from the user perspective are done by Maiar and incur for the user zero fees.
+One of the first dApps which needs this kind of transactions is xPortal: the official MultiversX mobile wallet app. When a user registers an account on xPortal, a new or already existing MultiversX address: erd1… is mapped on the MultiversX blockchain to the user’s mobile phone number. The mapping process involves several transactions on MultiversX blockchain, meta-transactions that from the user perspective are done by xPortal and incur for the user zero fees.
 
-On Maiar, a user can also choose to create a friendly username: @herotag, that is associated with his eGold (erd1…) address. The @herotag is registered on Elrond blockchain and the registration can be done through meta-transactions. This service is known as DNS service on the Elrond blockchain.
+On xPortal, a user can also choose to create a friendly username: @herotag, that is associated with his eGold (erd1…) address. The @herotag is registered on MultiversX blockchain and the registration can be done through meta-transactions. This service is known as DNS service on the MultiversX blockchain.
 
-Furthermore, the Elrond Standard Digital Token (ESDT) is in dire need of this functionality as well. Some users might hold only stablecoins, without any eGold to pay for the gas. Meta-transactions are thus of utmost importance for these users. Some of these users may want to pay the gas but not in eGold but in the token they hold (it depends on the relayer if it accepts payment in that token) or some relayers may want to make all the transactions free for their users (the relayer would pay the gas fee).  For example, a relayer may offer a yield farming service on Elrond network, and may be incentivised to allow its users to quickly offer liquidity to its pools even if they do not own any eGold to pay for the actual deposit transactions.
+Furthermore, the MultiversX eStandard Digital Token (ESDT) is in dire need of this functionality as well. Some users might hold only stablecoins, without any eGold to pay for the gas. Meta-transactions are thus of utmost importance for these users. Some of these users may want to pay the gas but not in eGold but in the token they hold (it depends on the relayer if it accepts payment in that token) or some relayers may want to make all the transactions free for their users (the relayer would pay the gas fee).  For example, a relayer may offer a yield farming service on MultiversX network, and may be incentivised to allow its users to quickly offer liquidity to its pools even if they do not own any eGold to pay for the actual deposit transactions.
 
-The above mentioned use cases are just a few examples where meta-transactions are needed by removing the friction for users. It is up to developers to integrate this type of transactions and experiment the best onboarding experiences and different other approaches.
+The above-mentioned use cases are just a few examples where meta-transactions are needed by removing the friction for users. It is up to developers to integrate this type of transactions and experiment the best onboarding experiences and different other approaches.
 
 ## Flow example 
-* Alice wants to send some stablecoins directly to Bob: $10 as USDt. They both have accounts on Elrond blockchain but Alice does not have eGold. She has only USDT in the form of stablecoins.
+* Alice wants to send some stablecoins directly to Bob: $10 as USDT. They both have accounts on MultiversX blockchain but Alice does not have eGold. She has only USDT in the form of stablecoins.
 
 * Alice opens the wallet and signs a message that she wants to send $10 to Bob, but without any fee, because the fee will be supported by a relayer.
 
@@ -60,13 +60,13 @@ Note: with meta-transactions, users never relinquish control of their private ke
 
 **Smart contract** - it is called by the user through the meta-transaction (could be owned by the relayer, but not necessarily).
 
-**ESDT token** - a token stored on Elrond’s extended data structure of an account, in parallel to the usual eGold balance; useful in many cases, but especially when a user wants to transfer other tokens without paying gas in eGold. 
+**ESDT token** - a token stored on MultiversX’s extended data structure of an account, in parallel to the usual eGold balance; useful in many cases, but especially when a user wants to transfer other tokens without paying gas in eGold. 
 
 ## Specification overview
 
 In Ethereum, any contract which supports gasless transactions must do all the work itself. It has to verify if the Data field of the wrapper transaction has the correct signed message by the actual sender, whether that transaction was correctly constructed and they should also add protection against replay attacks (the relayer sending the same signed message by Alice multiple times and executing it only once). By implementing this processing and verification at the Smart Contract level, it is harder to develop these smart contracts, relying on a lot of boilerplate code, and allowing for more places where mistakes can occur. Furthermore it costs more to execute in the VM, because every processing step has to be paid.
 
-Elrond comes with a new innovation by supporting meta transactions directly at the protocol level, verifying the transaction before the smart contract / built-in function execution in order to protect the users. This makes it easier for Smart Contract developers to enable this functionality (no need to develop it), it costs less as it is executed at native speed - not in VM. 
+MultiversX comes with a new innovation by supporting meta transactions directly at the protocol level, verifying the transaction before the smart contract / built-in function execution in order to protect the users. This makes it easier for Smart Contract developers to enable this functionality (no need to develop it), it costs less as it is executed at native speed - not in VM. 
 
 ## Specification
 
@@ -101,12 +101,12 @@ If the relayer is in another shard then the user, the processing in the current 
 After finishing the processing of the created smart contract result, the unused gas - the final gasRemaining - will be sent back to the relayer.
 
 ## Conclusion
-Meta-transactions are a method of allowing individuals to interact with the Elrond blockchain without holding any eGold and without ever relinquishing control of their private keys. This allows dApps to dramatically improve the users’ experiences.
+Meta-transactions are a method of allowing individuals to interact with the MultiversX blockchain without holding any eGold and without ever relinquishing control of their private keys. This allows dApps to dramatically improve the users’ experiences.
 
-It is necessary to have eGold on your account if you want to change a smart contract or send a transaction or do anything on Elrond. This makes user onboarding and user experience painful. There is no way to have a high conversion rate when the users have to buy eGold before being able to use an application.      
+It is necessary to have eGold on your account if you want to change a smart contract or send a transaction or do anything on MultiversX. This makes user onboarding and user experience painful. There is no way to have a high conversion rate when the users have to buy eGold before being able to use an application.      
 
 To overcome that, some applications might simply offer to pay gas on behalf of their users. This approach is often disregarded by developers as it is far from the philosophy of the protocol, which aims to guarantee independence in the network.
 
-Since income generation is generally correlated to the use of smart contracts, it is an economically viable model in most cases. As Elrond has smart contract royalties (30% of the consumed gas goes to the developer) we can easily see that from these royalties, the smart contract developer could finance the transactions fees of its (new) users when they are onboarding. The developer may choose to support the transaction costs for a set of users, or,  when the developer has other sources of revenue, they could simply pay for all the transactions. In this case, the developer is the relayer.   
+Since income generation is generally correlated to the use of smart contracts, it is an economically viable model in most cases. As MultiversX has smart contract royalties (30% of the consumed gas goes to the developer) we can easily see that from these royalties, the smart contract developer could finance the transactions fees of its (new) users when they are onboarding. The developer may choose to support the transaction costs for a set of users, or,  when the developer has other sources of revenue, they could simply pay for all the transactions. In this case, the developer is the relayer.   
 
 The application and the users might also agree with each other on-chain for an automatic reimbursement of gas costs implied. With the emergence of DeFi's services, more and more users might own ESTD tokens before owning any eGold. And some dApps might allow their users to pay for their transactions with an ESDT token. The application can also distribute its own tokens to its users at the time of registration. A relayer will help to put in place the right gas reimbursement strategy without requiring heavy investments in research and development.
