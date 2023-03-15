@@ -1,0 +1,25 @@
+## Name of the project
+Comverse
+
+## Description of the project
+Combased project is web3 agency, a leader in e-commerce space & core DeFi protocol creator. Read more here https://combased.io
+
+## Purpose
+We send to our holders monthly rewards with XMEX.
+
+To farm XMEX on the dex we use our CDO wallet, which takes 50% of all royalties and earnings from our services. We provide web3 development services, JewelSwap and sell our Shopify apps.
+
+## Address of Smart Contract
+https://explorer.multiversx.com/accounts/erd1qqqqqqqqqqqqqpgq8vp4vn0kl2mqmv3y7wju702cujt85ducgf8slh3c2a
+
+## Smart Contract Code
+https://github.com/combased-dev/Combased-XMEX-SC/blob/main/src/claim.rs
+
+## Description for every Smart Contract functionality
+https://github.com/combased-dev/Combased-XMEX-SC/blob/main/README.md
+
+## Number of users
+On the last distribution we sent LKMEX to 300+ wallets (holders)
+
+## Average LKMEX used during the previous month
+On the last distribution we sent around 18,200,000 XMEX
