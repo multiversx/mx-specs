@@ -1,5 +1,7 @@
 ## TokenManagementTransactionsFactory
 
+A class that provides methods for creating transactions for token management operations.
+
 ```
 class TokenManagementTransactionsFactory:
     createIssueFungibleTransaction({
@@ -62,7 +64,7 @@ class TokenManagementTransactionsFactory:
         guardian? : IAddress;
     }): Transaction;
 
-    createRegisterMetaESDT({
+    createRegisterMetaESDTTransaction({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -82,6 +84,64 @@ class TokenManagementTransactionsFactory:
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
+
+    createRegisterAndSetAllRolesTransaction({
+        sender: IAddress;
+        tokenName: string;
+        tokenTicker: string;
+        tokenType: RegisterAndSetAllRolesTokenType;
+        numDecimals: number;
+
+        // Optionals:
+        transactionNonce?: INonce;
+        value?: ITransactionValue;
+        gasPrice?: IGasPrice;
+        gasLimit?: IGasLimit;
+        guardian? : IAddress;
+    }): Transaction;
+
+    createSetBurnRoleGloballyTransaction({
+        sender: IAddress;
+        tokenIdentifier: string;
+
+        // Optionals:
+        transactionNonce?: INonce;
+        value?: ITransactionValue;
+        gasPrice?: IGasPrice;
+        gasLimit?: IGasLimit;
+        guardian? : IAddress;
+    }): Transaction;
+
+    createUnsetBurnRoleGloballyTransaction({
+        sender: IAddress;
+        tokenIdentifier: string;
+
+        // Optionals:
+        transactionNonce?: INonce;
+        value?: ITransactionValue;
+        gasPrice?: IGasPrice;
+        gasLimit?: IGasLimit;
+        guardian? : IAddress;
+    }): Transaction;
+
+    createSetSpecialRoleOnFungibleTransaction({
+        sender: IAddress;
+        user: IAddress;
+        tokenIdentifier: string;
+        addRoleLocalMint: boolean;
+        addRoleLocalBurn: boolean;
+
+        // Optionals:
+        transactionNonce?: INonce;
+        value?: ITransactionValue;
+        gasPrice?: IGasPrice;
+        gasLimit?: IGasLimit;
+        guardian? : IAddress;
+    }): Transaction;
+
+    createSetSpecialRoleOnSemiFungibleTransaction({
+        
+    })
 ```
 
 If the language supports it, the input arguments objects may be designed using interfaces and inheritance. For example, in TypeScript:
