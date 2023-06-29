@@ -1,3 +1,5 @@
+## Address
+
 ```
 class Address:
     // Should also validate the length of the provided input.
@@ -33,6 +35,8 @@ print("Address (bech32-encoded)", address.bech32())
 print("Public key (hex-encoded):", address.hex())
 ```
 
+## AddressFactory
+
 ```
 class AddressFactory:
     constructor(hrp: string = DEFAULT_HRP);
@@ -61,6 +65,8 @@ address = factory.create_from_bech32("erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3z
 address = factory.create_from_hex("0139472eff6886771a982f3083da5d421f24c29181e63888228dc81ca60d69e1")
 address = factory.create_from_pubkey(bytes.fromhex("0139472eff6886771a982f3083da5d421f24c29181e63888228dc81ca60d69e1"))
 ```
+
+## AddressConverter
 
 ```
 class AddressConverter:
