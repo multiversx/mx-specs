@@ -4,7 +4,7 @@ A class that provides methods for creating transactions for token management ope
 
 ```
 class TokenManagementTransactionsFactory:
-    createIssueFungibleTransaction({
+    create_transaction_for_issuing_fungible({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -17,14 +17,14 @@ class TokenManagementTransactionsFactory:
         canAddSpecialRoles: boolean;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
 
-    createIssueSemiFungibleTransaction({
+    create_transaction_for_issuing_semi_fungible({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -37,14 +37,14 @@ class TokenManagementTransactionsFactory:
         canAddSpecialRoles: boolean;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     })
 
-    createIssueNonFungibleTransaction({
+    create_transaction_for_issuing_non_fungible({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -57,14 +57,14 @@ class TokenManagementTransactionsFactory:
         canAddSpecialRoles: boolean;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
 
-    createRegisterMetaESDTTransaction({
+    create_transaction_for_registering_meta_esdt({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -78,14 +78,14 @@ class TokenManagementTransactionsFactory:
         canAddSpecialRoles: boolean;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
 
-    createRegisterAndSetAllRolesTransaction({
+    create_transaction_for_registering_and_setting_roles({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -93,38 +93,38 @@ class TokenManagementTransactionsFactory:
         numDecimals: number;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
 
-    createSetBurnRoleGloballyTransaction({
+    create_transaction_for_setting_burn_role_globally({
         sender: IAddress;
         tokenIdentifier: string;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
 
-    createUnsetBurnRoleGloballyTransaction({
+    create_transaction_for_unsetting_burn_role_globally({
         sender: IAddress;
         tokenIdentifier: string;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
 
-    createSetSpecialRoleOnFungibleTransaction({
+    create_transaction_for_setting_special_role_on_fungible_token({
         sender: IAddress;
         user: IAddress;
         tokenIdentifier: string;
@@ -132,16 +132,31 @@ class TokenManagementTransactionsFactory:
         addRoleLocalBurn: boolean;
 
         // Optionals:
-        transactionNonce?: INonce;
+        nonce?: INonce;
         value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
     }): Transaction;
 
-    createSetSpecialRoleOnSemiFungibleTransaction({
-        
+    create_transaction_for_setting_special_role_on_semi_fungible_token({
+        sender: IAddress;
+        user: IAddress;
+        tokenIdentifier: string;
+        addRoleNFTCreate: boolean;
+        addRoleNFTBurn: boolean;
+        addRoleNFTAddQuantity: boolean;
+        addRoleESDTTransferRole: boolean;
+
+        // Optionals:
+        nonce?: INonce;
+        value?: ITransactionValue;
+        gasPrice?: IGasPrice;
+        gasLimit?: IGasLimit;
+        guardian? : IAddress;
     })
+
+    ...
 ```
 
 If the language supports it, the input arguments objects may be designed using interfaces and inheritance. For example, in TypeScript:
@@ -165,7 +180,7 @@ interface IIssueSemiFungibleArgs extends IBaseArgs {
 }
 
 interface IBaseArgs {
-    transactionNonce?: INonce;
+    nonce?: INonce;
     value?: ITransactionValue;
     gasPrice?: IGasPrice;
     gasLimit?: IGasLimit;
