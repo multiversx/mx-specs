@@ -69,5 +69,5 @@ Module-level functions:
 // Note that the first input parameter is received as an interface, but the return value is a concrete type [see Guideline **`in-ifaces-out-concrete-types`**].
 compute_contract_address(deployer: IAddress, deployment_nonce: INonce, address_hrp: string): Address;
 
-get_shard_of_address(address: IAddress): number;
+get_shard_of_address(address: IAddress, num_shards: number): number;
 ```

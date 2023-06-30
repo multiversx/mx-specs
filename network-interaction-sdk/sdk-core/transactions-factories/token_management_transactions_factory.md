@@ -21,7 +21,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -41,7 +40,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -61,7 +59,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -82,7 +79,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -97,7 +93,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -109,7 +104,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -121,7 +115,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -136,7 +129,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -153,7 +145,6 @@ class TokenManagementTransactionsFactory:
 
         // Optionals:
         nonce?: INonce;
-        value?: ITransactionValue;
         gasPrice?: IGasPrice;
         gasLimit?: IGasLimit;
         guardian? : IAddress;
@@ -208,7 +199,6 @@ interface IIssueSemiFungibleArgs extends IBaseArgs {
 
 interface IBaseArgs {
     nonce?: INonce;
-    value?: ITransactionValue;
     gasPrice?: IGasPrice;
     gasLimit?: IGasLimit;
     guardian? : IAddress;
