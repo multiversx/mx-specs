@@ -1,3 +1,9 @@
+## UserPEM
+
+Implementation examples:
+ - https://github.com/multiversx/mx-sdk-py-wallet/blob/main/multiversx_sdk_wallet/user_pem.py
+ - https://github.com/multiversx/mx-sdk-js-wallet/blob/main/src/pem.ts
+
 ```
 class UserPEM:
     constructor(label: string, key: UserSecretKey);
