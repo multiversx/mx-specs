@@ -1,8 +1,8 @@
 ## Mnemonic
 
-Implementation examples:
- - https://github.com/multiversx/mx-sdk-js-wallet/blob/main/src/mnemonic.ts
- - https://github.com/multiversx/mx-sdk-py-wallet/blob/main/multiversx_sdk_wallet/mnemonic.py
+This component allows one to generate a new mnemonic, or load / parse / validate an existing one. 
+
+It also allows one to derive a secret key from the mnemonic.
 
 ```
 class Mnemonic:
@@ -28,3 +28,8 @@ class Mnemonic:
     toString(): string;
 }
 ```
+
+### Implementation notes
+
+ - https://github.com/multiversx/mx-sdk-js-wallet/blob/main/src/mnemonic.ts
+ - https://github.com/multiversx/mx-sdk-py-wallet/blob/main/multiversx_sdk_wallet/mnemonic.py

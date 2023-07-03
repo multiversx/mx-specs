@@ -1,8 +1,6 @@
 ## UserPEM
 
-Implementation examples:
- - https://github.com/multiversx/mx-sdk-py-wallet/blob/main/multiversx_sdk_wallet/user_pem.py
- - https://github.com/multiversx/mx-sdk-js-wallet/blob/main/src/pem.ts
+`UserPEM` is a thin wrapper over the functionality of `pem`.
 
 ```
 class UserPEM:
@@ -17,3 +15,8 @@ class UserPEM:
     save(path: Path): void;
     to_text(): string;
 ```
+
+### Implementation notes
+
+ - https://github.com/multiversx/mx-sdk-py-wallet/blob/main/multiversx_sdk_wallet/user_pem.py
+ - https://github.com/multiversx/mx-sdk-js-wallet/blob/main/src/pem.ts

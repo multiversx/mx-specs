@@ -1,3 +1,5 @@
+## UserPublicKey
+
 ```
 class UserPublicKey:
     // The constructor(s) should also validate the length of the provided input.

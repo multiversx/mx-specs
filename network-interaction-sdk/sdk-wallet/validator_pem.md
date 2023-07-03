@@ -1,3 +1,7 @@
+## ValidatorPEM
+
+`ValidatorPEM` is a thin wrapper over the functionality of `pem`.
+
 ```
 class ValidatorPEM:
     constructor(label: string, key: ValidatorSecretKey);
@@ -12,3 +16,6 @@ class ValidatorPEM:
     save(path: Path): void;
     to_text(): string;
 ```
+
+### Implementation notes
+
