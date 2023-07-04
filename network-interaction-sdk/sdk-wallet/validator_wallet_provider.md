@@ -1,7 +1,7 @@
-## ValidatorCryptoProvider
+## ValidatorWalletProvider
 
 ```
-class ValidatorCryptoProvider:
+class ValidatorWalletProvider:
     // Should not throw.
     generate_pair(): (ISecretKey, IPublicKey)
 

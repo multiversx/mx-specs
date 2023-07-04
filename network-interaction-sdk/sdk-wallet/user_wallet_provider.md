@@ -1,7 +1,7 @@
-## UserCryptoProvider
+## UserWalletProvider
 
 ```
-class UserCryptoProvider:
+class UserWalletProvider:
     // Should not throw.
     generate_pair(): (ISecretKey, IPublicKey)
 
@@ -30,4 +30,4 @@ class UserCryptoProvider:
     derive_secret_key_from_mnemonic(mnemonic: Mnemonic, address_index: number = 0, password: string = ""): ISecretKey
 ```
 
-Generally speaking, `generate_mnemonic` and `derive_secret_key_from_mnemonic` are only available in the `UserCryptoProvider` (that is, they are not available in `ValidatorCryptoProvider`).
+Generally speaking, `generate_mnemonic` and `derive_secret_key_from_mnemonic` are only available in the `UserWalletProvider` (that is, they are not available in `ValidatorWalletProvider`).
