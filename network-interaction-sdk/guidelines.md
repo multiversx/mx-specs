@@ -13,3 +13,7 @@ Generally speaking, it's recommended to return concrete types in the public API 
  - Make sure to follow the naming conventions of the language you're using, e.g. `snake_case` vs. `camelCase`.
  - In the specs, interfaces are prefixed with `I`, simply to make them stand out. However, in the implementing libraries, this convention does not have to be applied.
  - In `go`, the term `serialize` (whether it's part of a class name or a function name) can be replaced by `marshal`, since that is the convention.
+
+## **`out-of-specs-arguments-should-be-optional`**
+
+E.g. randomness.
