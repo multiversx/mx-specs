@@ -23,9 +23,9 @@ class EncryptedKeystore:
     // Below, "passphrase" is the bip39 passphrase required to derive a secret key from a mnemonic (by default, it should be an empty string).
     get_secret_key(index: int, passphrase: string): ISecretKey
 
-    export_to_object(password: string): KeyfileObject
+    export_to_object(password: string, address_hrp: string): KeyfileObject
 
-    export_to_file(path: Path, password: string)
+    export_to_file(path: Path, password: string, address_hrp: string)
 ```
 
 ```
@@ -84,6 +84,32 @@ TBD: Can we perhaps adjust `EncryptedData` to be more compatible with `KeyfileOb
 
 ## Examples of usage
 
+Create a new JSON keystore using a new mnemonic:
+
 ```
-...
+provider = new UserWalletProvider()
+mnemonic = provider.generate_mnemonic()
+keystore = EncryptedKeystore.new_from_mnemonic(provider, mnemonic)
+keystore.export_to_file("path/to/file.json", "password", "erd")
+```
+
+Iterating over the first 3 accounts:
+
+```
+provider = new UserWalletProvider()
+keystore = EncryptedKeystore.import_from_file(provider, "path/to/file.json", "password")
+
+for i in [0, 1, 2]:
+    secret_key = keystore.get_secret_key(i, "")
+    public_key = provider.compute_public_key_from_secret_key(secret_key)
+    address = new Address(public_key, "erd")
+    print("Address", i, address.bech32())
+```
+
+Changing the password of an exisint keystore:
+
+```
+provider = new UserWalletProvider()
+keystore = EncryptedKeystore.import_from_file(provider, "path/to/file.json", "password")
+keystore.export_to_file("path/to/file.json", "new_password", "erd")
 ```

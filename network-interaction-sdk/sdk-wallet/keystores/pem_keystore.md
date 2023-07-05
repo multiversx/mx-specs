@@ -18,9 +18,9 @@ class PEMKeystore:
 
     get_secret_key(index: int): ISecretKey
 
-    export_to_text(): string
+    export_to_text(address_hrp: string): string
 
-    export_to_file(path: Path)
+    export_to_file(path: Path, address_hrp: string)
 ```
 
 ## Examples of usage

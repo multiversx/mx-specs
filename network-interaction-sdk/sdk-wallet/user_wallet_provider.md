@@ -22,6 +22,10 @@ class UserWalletProvider:
     // - ErrInvalidPublicKey
     create_public_key_from_bytes(data: bytes): IPublicKey
 
+    // Can throw:
+    // - ErrInvalidSecretKey
+    compute_public_key_from_secret_key(secret_key: ISecretKey): IPublicKey
+
     // Should not throw.
     generate_mnemonic(): Mnemonic
 
