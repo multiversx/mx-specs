@@ -22,3 +22,19 @@ class Mnemonic:
     toString(): string;
 }
 ```
+
+## Examples of usage
+
+Creating a new mnemonic and deriving the first secret key.
+
+```
+provider = new UserWalletProvider()
+mnemonic = provider.generate_mnemonic()
+print(mnemonic.toString())
+
+mnemonic = Mnemonic.newfromText("...")
+sk = provider.derive_secret_key_from_mnemonic(mnemonic, address_index=0 , passphrase="")
+pk = provider.compute_public_key_from_secret_key(sk)
+address = new Address(public_key, "erd")
+print(address.bech32())
+```
