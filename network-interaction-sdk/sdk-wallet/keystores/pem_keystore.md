@@ -7,16 +7,20 @@ class PEMKeystore:
     // Named constructor
     static new_from_secret_key(secret_key: ISecretKey): PEMKeystore
 
-    // The parameter "passphrase" would normally be ignored.
-    get_secret_key(index: int, passphrase: string): ISecretKey
+    // Named constructor
+    static new_from_secret_keys(secret_keys: ISecretKey[]): PEMKeystore
 
-    // Should return false.
-    supports_passphrase(): boolean
+    // Importing "constructor"
+    static import_from_text(text: string): PEMKeystore
 
-    // Returns the JSON representation of the keystore.
-    serialize(): bytes
+    // Importing "constructor"
+    static import_from_file(path: Path): PEMKeystore
 
-    save(path: Path)
+    get_secret_key(index: int): ISecretKey
+
+    export_to_text(): string
+
+    export_to_file(path: Path)
 ```
 
 ## Examples of usage

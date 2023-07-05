@@ -23,9 +23,6 @@ class EncryptedKeystore:
     // Below, "passphrase" is the bip39 passphrase required to derive a secret key from a mnemonic (by default, it should be an empty string).
     get_secret_key(index: int, passphrase: string): ISecretKey
 
-    // Should return true if kind == 'mnemonic' AND passphrases are enabled (left as future work).
-    supports_passphrase(): boolean
-
     export_to_object(password: string): KeyfileObject
 
     export_to_file(path: Path, password: string)
