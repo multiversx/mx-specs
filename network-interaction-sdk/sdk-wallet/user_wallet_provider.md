@@ -3,7 +3,7 @@
 ```
 class UserWalletProvider:
     // Should not throw.
-    generate_pair(): (ISecretKey, IPublicKey)
+    generate_keypair(): (ISecretKey, IPublicKey)
 
     // Can throw:
     // - ErrInvalidSecretKey
