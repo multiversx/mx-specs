@@ -75,13 +75,17 @@ address = factory.create_from_hex("0139472eff6886771a982f3083da5d421f24c29181e63
 address = factory.create_from_public_key(bytes.fromhex("0139472eff6886771a982f3083da5d421f24c29181e63888228dc81ca60d69e1"))
 ```
 
-Module-level functions:
+## AddressComputer
 
 ```
-// Note that the first input parameter is received as an interface, but the return value is a concrete type [see Guideline **`in-ifaces-out-concrete-types`**].
-compute_contract_address(deployer: IAddress, deployment_nonce: INonce): Address;
+class AddressComputer:
+    // The constructor is not captured by the specs; it's up to the implementing library to define it.
 
-get_shard_of_address(address: IAddress, num_shards: number): number;
+    // Note that the first input parameter is received as an interface, but the return value is a concrete type (see guidelines).
+    compute_contract_address(deployer: IAddress, deployment_nonce: INonce): Address;
+
+    // The number of shards (necessary for computing the shard ID) would be received as a constructor parameter - constructor is not captured by specs.
+    get_shard_of_address(address: IAddress): number;
 ```
 
 Above, `IAddress` should satisfy:
