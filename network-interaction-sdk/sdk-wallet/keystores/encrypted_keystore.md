@@ -19,7 +19,7 @@ class EncryptedKeystore:
     static import_from_file(wallet_provider: IWalletProvider, path: Path, password: string): Keystore
 
     // When kind == 'secretKey', only index == 0 is supported.
-    // When kind == 'mnemonic', the wallet provider is used under the hood to derive the secret key.
+    // When kind == 'mnemonic', secret key derivation happens under the hood.
     // Below, "passphrase" is the bip39 passphrase required to derive a secret key from a mnemonic (by default, it should be an empty string).
     get_secret_key(index: int, passphrase: string): ISecretKey
 

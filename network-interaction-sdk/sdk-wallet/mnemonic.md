@@ -15,6 +15,10 @@ class Mnemonic:
     static newfromText(text: string): Mnemonic;
     static newfromWords(words: string[]): Mnemonic;
 
+    // Can throw:
+    // - ErrInvalidMnemonic
+    derive_secret_key(address_index: number = 0, passphrase: string = ""): ISecretKey
+
     // Gets the mnemonic words.
     getWords(): string[];
 

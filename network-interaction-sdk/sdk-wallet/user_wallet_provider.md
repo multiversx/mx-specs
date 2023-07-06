@@ -28,10 +28,6 @@ class UserWalletProvider:
 
     // Should not throw.
     generate_mnemonic(): Mnemonic
-
-    // Can throw:
-    // - ErrInvalidMnemonic
-    derive_secret_key_from_mnemonic(mnemonic: Mnemonic, address_index: number = 0, passphrase: string = ""): ISecretKey
 ```
 
 Generally speaking, `generate_mnemonic` and `derive_secret_key_from_mnemonic` are only available in the `UserWalletProvider` (that is, they are not available in `ValidatorWalletProvider`).
