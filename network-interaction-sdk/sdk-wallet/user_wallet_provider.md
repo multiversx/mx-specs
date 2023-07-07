@@ -5,14 +5,6 @@ class UserWalletProvider:
     // Should not throw.
     generate_keypair(): (ISecretKey, IPublicKey)
 
-    // Should not throw (generally speaking).
-    //
-    // Generates a keypair that satisfies the given constraints.
-    // 
-    // Generally speaking, the input paramters would be a predicate (function that returns a boolean) 
-    // or something similar (depending on the programming language).
-    generate_keypair_with_constraint(isConstraintSatisfied: Predicate[input = (ISecretKey, IPublicKey), output = boolean]): (ISecretKey, IPublicKey)
-
     // Can throw:
     // - ErrInvalidSecretKey
     sign(data: bytes, secret_key: ISecretKey): bytes
