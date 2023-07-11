@@ -7,7 +7,7 @@ class TokenManagementTransactionsFactory:
     // IConfig should be a private (internal) interface that defines the necessary configuration (e.g. minGasLimit, gasLimitPerByte, issueCost).
     constructor(config: IConfig);
 
-    create_transaction_for_issuing_fungible({
+    create_transaction_intent_for_issuing_fungible({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -18,15 +18,9 @@ class TokenManagementTransactionsFactory:
         canChangeOwner: boolean;
         canUpgrade: boolean;
         canAddSpecialRoles: boolean;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    }): Transaction;
-
-    create_transaction_for_issuing_semi_fungible({
+    create_transaction_intent_for_issuing_semi_fungible({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -37,15 +31,9 @@ class TokenManagementTransactionsFactory:
         canChangeOwner: boolean;
         canUpgrade: boolean;
         canAddSpecialRoles: boolean;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    })
-
-    create_transaction_for_issuing_non_fungible({
+    create_transaction_intent_for_issuing_non_fungible({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -56,15 +44,9 @@ class TokenManagementTransactionsFactory:
         canChangeOwner: boolean;
         canUpgrade: boolean;
         canAddSpecialRoles: boolean;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    }): Transaction;
-
-    create_transaction_for_registering_meta_esdt({
+    create_transaction_intent_for_registering_meta_esdt({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
@@ -76,65 +58,35 @@ class TokenManagementTransactionsFactory:
         canChangeOwner: boolean;
         canUpgrade: boolean;
         canAddSpecialRoles: boolean;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    }): Transaction;
-
-    create_transaction_for_registering_and_setting_roles({
+    create_transaction_intent_for_registering_and_setting_roles({
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
         tokenType: RegisterAndSetAllRolesTokenType;
         numDecimals: number;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    }): Transaction;
-
-    create_transaction_for_setting_burn_role_globally({
+    create_transaction_intent_for_setting_burn_role_globally({
         sender: IAddress;
         tokenIdentifier: string;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    }): Transaction;
-
-    create_transaction_for_unsetting_burn_role_globally({
+    create_transaction_intent_for_unsetting_burn_role_globally({
         sender: IAddress;
         tokenIdentifier: string;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    }): Transaction;
-
-    create_transaction_for_setting_special_role_on_fungible_token({
+    create_transaction_intent_for_setting_special_role_on_fungible_token({
         sender: IAddress;
         user: IAddress;
         tokenIdentifier: string;
         addRoleLocalMint: boolean;
         addRoleLocalBurn: boolean;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    }): Transaction;
-
-    create_transaction_for_setting_special_role_on_semi_fungible_token({
+    create_transaction_intent_for_setting_special_role_on_semi_fungible_token({
         sender: IAddress;
         user: IAddress;
         tokenIdentifier: string;
@@ -142,65 +94,31 @@ class TokenManagementTransactionsFactory:
         addRoleNFTBurn: boolean;
         addRoleNFTAddQuantity: boolean;
         addRoleESDTTransferRole: boolean;
+    }): TransactionIntent;
 
-        // Optionals:
-        nonce?: INonce;
-        gasPrice?: IGasPrice;
-        gasLimit?: IGasLimit;
-        guardian? : IAddress;
-    })
+    create_transaction_intent_for_setting_special_role_on_non_fungible_token
 
-    create_transaction_for_setting_special_role_on_non_fungible_token
+    create_transaction_intent_for_creating_nft
 
-    create_transaction_for_creating_nft
+    create_transaction_intent_for_pausing
 
-    create_transaction_for_pausing
+    create_transaction_intent_for_unpausing
 
-    create_transaction_for_unpausing
+    create_transaction_intent_for_freezing
 
-    create_transaction_for_freezing
+    create_transaction_intent_for_unfreezing
 
-    create_transaction_for_unfreezing
+    create_transaction_intent_for_wiping
 
-    create_transaction_for_wiping
+    create_transaction_intent_for_local_minting
 
-    create_transaction_for_local_minting
+    create_transaction_intent_for_local_burning
 
-    create_transaction_for_local_burning
+    create_transaction_intent_for_updating_attributes
 
-    create_transaction_for_updating_attributes
+    create_transaction_intent_for_adding_quantity
 
-    create_transaction_for_adding_quantity
-
-    create_transaction_for_burning_quantity
+    create_transaction_intent_for_burning_quantity
 
     ...
-```
-
-If the language supports it, the input arguments objects may be designed using interfaces and inheritance. For example, in TypeScript:
-
-```
-interface IRegisterMetaESDT extends IIssueSemiFungibleArgs {
-    numDecimals: number;
-}
-
-interface IIssueSemiFungibleArgs extends IBaseArgs {
-    issuer: IAddress;
-    tokenName: string;
-    tokenTicker: string;
-    canFreeze: boolean;
-    canWipe: boolean;
-    canPause: boolean;
-    canTransferNFTCreateRole: boolean;
-    canChangeOwner: boolean;
-    canUpgrade: boolean;
-    canAddSpecialRoles: boolean;
-}
-
-interface IBaseArgs {
-    nonce?: INonce;
-    gasPrice?: IGasPrice;
-    gasLimit?: IGasLimit;
-    guardian? : IAddress;
-}
 ```

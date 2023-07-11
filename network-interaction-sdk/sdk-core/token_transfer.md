@@ -4,10 +4,10 @@
 class TokenTransfer:
     // Fields (properties):
     token_identifier: ITokenIdentifier;
-    token_nonce: INonce;
+    token_nonce: number;
     amount_in_atomic_units: number;
 
-    constructor(tokenIdentifier: ITokenIdentifier, tokenNonce: INonce, amountInAtomicUnits: number);
+    constructor(tokenIdentifier: ITokenIdentifier, tokenNonce: number, amountInAtomicUnits: number);
 
     isEgld(): boolean;
 
@@ -16,9 +16,9 @@ class TokenTransfer:
     // Named constructors:
     static ofEgld(amountInAtomicUnits: number): TokenTransfer;
     static ofFungible(tokenIdentifier: ITokenIdentifier, amountInAtomicUnits: number): TokenTransfer;
-    static ofNonFungible(tokenIdentifier: ITokenIdentifier, nonce: INonce): TokenTransfer;
-    static ofSemiFungible(tokenIdentifier: ITokenIdentifier, nonce: INonce, quantity: number): TokenTransfer;
-    static ofMetaESDT(tokenIdentifier: ITokenIdentifier, nonce: INonce, amountInAtomicUnits: number): TokenTransfer;
+    static ofNonFungible(tokenIdentifier: ITokenIdentifier, nonce: number): TokenTransfer;
+    static ofSemiFungible(tokenIdentifier: ITokenIdentifier, nonce: number, quantity: number): TokenTransfer;
+    static ofMetaESDT(tokenIdentifier: ITokenIdentifier, nonce: number, amountInAtomicUnits: number): TokenTransfer;
 
     // Amount in atomic units, as string.
     toString();

@@ -82,7 +82,7 @@ class AddressComputer:
     // The constructor is not captured by the specs; it's up to the implementing library to define it.
 
     // Note that the first input parameter is received as an interface, but the return value is a concrete type (see guidelines).
-    compute_contract_address(deployer: IAddress, deployment_nonce: INonce): Address;
+    compute_contract_address(deployer: IAddress, deployment_nonce: number): Address;
 
     // The number of shards (necessary for computing the shard ID) would be received as a constructor parameter - constructor is not captured by specs.
     get_shard_of_address(address: IAddress): number;
