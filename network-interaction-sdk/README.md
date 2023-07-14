@@ -27,3 +27,11 @@ Generally speaking, it's recommended to return concrete types in the public API 
  - In `go`, the term `serialize` (whether it's part of a class name or a function name) can be replaced by `marshal`, since that is the convention.
  - Errors should also follow the language convention - e.g. `ErrInvalidPublicKey` vs `InvalidPublicKeyError`. Should have the same error message in all implementing libraries, though.
 
+## **`any-object`**
+
+In the specs, `object` is used as a placeholder for any type of object. In the implementing libraries, this would be replaced with the most appropriate type. For example:
+
+- in Go: `map[string]interface{}` or directly `interface{}` (depending on the context)
+- in Python: `dict` or `Any`
+- in JavaScript / TypeScript: `object` or `any`
+
