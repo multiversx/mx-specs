@@ -96,29 +96,88 @@ class TokenManagementTransactionsFactory:
         addRoleESDTTransferRole: boolean;
     }): TransactionIntent;
 
-    create_transaction_intent_for_setting_special_role_on_non_fungible_token
+    create_transaction_intent_for_setting_special_role_on_non_fungible_token({
+        sender: IAddress;
+        user: IAddress;
+        tokenIdentifier: str;
+        addRoleNftCreate: bool;
+        addRoleNftBurn: bool;
+        addRoleNftUpdate_attributes: bool;
+        addRoleNftAddUri: bool;
+        addRoleESDTTransferRole: bool;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_creating_nft
+    create_transaction_intent_for_creating_nft({
+        sender: IAddress;
+        tokenIdentifier: str;
+        initialQuantity: int;
+        name: str;
+        royalties: int;
+        hash: str;
+        attributes: bytes;
+        uris: List[str];
+    }): TransactionIntent;
 
-    create_transaction_intent_for_pausing
+    create_transaction_intent_for_pausing({
+        sender: IAddress;
+        tokenIdentifier: str;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_unpausing
+    create_transaction_intent_for_unpausing({
+        sender: IAddress;
+        tokenIdentifier: str;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_freezing
+    create_transaction_intent_for_freezing({
+        sender: IAddress;
+        user: IAddress;
+        tokenIdentifier: str;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_unfreezing
+    create_transaction_intent_for_unfreezing({
+        sender: IAddress;
+        user: IAddress;
+        tokenIdentifier: str;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_wiping
+    create_transaction_intent_for_wiping({
+        sender: IAddress;
+        user: IAddress;
+        tokenIdentifier: str;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_local_minting
+    create_transaction_intent_for_local_minting({
+        sender: IAddress;
+        tokenIdentifier: str;
+        supplyToMint: int;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_local_burning
+    create_transaction_intent_for_local_burning({
+        sender: IAddress;
+        tokenIdentifier: str;
+        supplyToBurn: int;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_updating_attributes
+    create_transaction_intent_for_updating_attributes({
+        sender: IAddress;
+        tokenIdentifier: str;
+        tokenNonce: int;
+        attributes: bytes;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_adding_quantity
+    create_transaction_intent_for_adding_quantity({
+        sender: IAddress;
+        tokenIdentifier: str;
+        tokenNonce: int;
+        quantityToAdd: int;
+    }): TransactionIntent;
 
-    create_transaction_intent_for_burning_quantity
+    create_transaction_intent_for_burning_quantity({
+        sender: IAddress;
+        tokenIdentifier: str;
+        tokenNonce: int;
+        quantityToBurn: int;
+    }): TransactionIntent;
 
     ...
 ```
