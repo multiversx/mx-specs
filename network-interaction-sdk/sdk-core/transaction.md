@@ -8,7 +8,7 @@ dto Transaction:
     chainID: string;
 
     nonce?: uint64;
-    value?: string;
+    value?: (string|bigNumber);
     senderUsername?: string;
     receiverUsername?: string;
     gasPrice?: uint32;
