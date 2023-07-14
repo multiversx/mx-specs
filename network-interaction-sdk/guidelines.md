@@ -12,3 +12,12 @@ Generally speaking, it's recommended to return concrete types in the public API 
  
  - Make sure to follow the naming conventions of the language you're using, e.g. `snake_case` vs. `camelCase`.
  - In the specs, interfaces are prefixed with `I`, simply to make them stand out. However, in the implementing libraries, this convention does not have to be applied. 
+
+## **`any-object`**
+
+In the specs, `object` is used as a placeholder for any type of object. In the implementing libraries, this would be replaced with the most appropriate type. For example:
+
+- in Go: `map[string]interface{}` or directly `interface{}` (depending on the context)
+- in Python: `dict` or `Any`
+- in JavaScript / TypeScript: `object` or `any`
+
