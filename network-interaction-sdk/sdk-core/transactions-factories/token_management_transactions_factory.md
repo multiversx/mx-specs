@@ -12,6 +12,8 @@ class TokenManagementTransactionsFactory:
         sender: IAddress;
         tokenName: string;
         tokenTicker: string;
+        initialSupply: int;
+        numDecimals: int;
         canFreeze: boolean;
         canWipe: boolean;
         canPause: boolean;
