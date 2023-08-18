@@ -31,7 +31,9 @@ Generally speaking, it's recommended to return concrete types in the public API 
 
 In the specs, `object` is used as a placeholder for any type of object. In the implementing libraries, this would be replaced with the most appropriate type. For example:
 
-- in Go: `map[string]interface{}` or directly `interface{}` (depending on the context)
+- in Go:
+  - before Go 1.18: `map[string]interface{}` or directly `interface{}` (depending on the context)
+  - after Go 1.18: `map[string]any` or directly `any` (depending on the context)
 - in Python: `dict` or `Any`
 - in JavaScript / TypeScript: `object` or `any`
 
