@@ -1,7 +1,7 @@
-## DelegationTransactionsFactory
+## DelegationTransactionIntentsFactory
 
 ```
-class DelegationTransactionsFactory:
+class DelegationTransactionIntentsFactory:
     // The constructor is not captured by the specs; it's up to the implementing library to define it.
     // Generally speaking, the constructor should be parametrized with a configuration object which defines entries such as:
     // "minGasLimit", "gasLimitPerByte", gas limit for specific operations etc. (e.g. "gasLimitForStaking").
