@@ -1,7 +1,7 @@
 ## SmartContractTransactionsFactory
 
 ```
-class SmartContractTransactionsFactory:
+class SmartContractTransactionIntentsFactory:
     // The constructor is not captured by the specs; it's up to the implementing library to define it.
     // Generally speaking, the constructor should be parametrized with a configuration object which defines entries such as:
     // "minGasLimit", "gasLimitPerByte" etc.
