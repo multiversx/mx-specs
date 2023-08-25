@@ -1,4 +1,4 @@
-## SmartContractTransactionsFactory
+## SmartContractTransactionIntentsFactory
 
 ```
 class SmartContractTransactionIntentsFactory:

@@ -1,4 +1,4 @@
-## DelegationTransactionsFactory
+## DelegationTransactionIntentsFactory
 
 ```
 class DelegationTransactionIntentsFactory:

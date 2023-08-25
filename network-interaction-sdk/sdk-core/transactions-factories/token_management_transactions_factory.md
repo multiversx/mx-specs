@@ -1,4 +1,4 @@
-## TokenManagementTransactionsFactory
+## TokenManagementTransactionIntentsFactory
 
 A class that provides methods for creating transactions for token management operations.
 
