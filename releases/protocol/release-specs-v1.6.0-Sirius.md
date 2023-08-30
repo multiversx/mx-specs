@@ -2,7 +2,7 @@
 
 # Contents
 
-This document explains the contents of the rc/v1.6.0 release. It is split in 3 sections: 
+This document explains the contents of the rc/v1.6.0 release codenamed Sirius. It is split in 3 sections: 
 - the **features** list containing detailed insights of the feature along with the external impact and the relevant 
 pull requests list
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the 
@@ -14,7 +14,7 @@ multiple areas at once. It is here only for reference purposes only.
 
 ## 1. Optimise consensus signature check [#4467](https://github.com/multiversx/mx-chain-go/pull/4467)
 
-This feature brings several changes on the way block signatures are handler during consensus in order to optimize the CPU usage.
+This feature brings several changes on the way block signatures are handled during consensus in order to optimize the CPU usage.
 Each signature share used in the aggregation of signatures for the block consensus proof, was previously individually verified.
 Assuming all validators are honest, the verification takes ~3ms per signature. In metachain, each block accumulates ~400 signatures
 which are individually checked by all participants in consensus, taking a cumulative ~1.2s CPU time for each block that passes consensus.
@@ -24,7 +24,7 @@ The cost of the verification of the aggregated signature was optimized by the pr
 This however can only be saved if all aggregated signatures are valid, otherwise, if the aggregated signature does not verify we will have an extra cost of 3ms,
 as the leader will aggregate first the signatures and then verify the aggregated signature. If the aggregated signature does not verify, the leader will
 have to check the signatures individually. In order to avoid the increase and instead always have this optimization, a penalty for providing invalid
-signatures will be implemented which we call a pseudo slashing, that should provide enough disincentive. The pseudo slashing is implementing through the addition
+signatures will be implemented which we call a pseudo slashing, that should provide enough disincentive. The pseudo slashing is implemented through the addition
 of an extra message with the proof for received invalid signatures, sent on the consensus. This message is not mandatory to be sent during a consensus round,
 but if it is sent, the proof will be verified and used by nodes listening to the consensus messages to temporarily blacklist the misbehaving nodes.
 While blacklisted, the messages from the nodes in the blacklist will be dropped and this will cause rating drop and the eventual jailing, that penalize the node
@@ -55,15 +55,14 @@ through the unjailing fee, missing block rewards/fees and queue time for becomin
 ## 2. Refactor resolvers [#4692](https://github.com/multiversx/mx-chain-go/pull/4692)
 
 This feature solves a technical debt by splitting the functionality of a resolver component in 2.
-The resolver component should be able only to respond to requests from the p2p network and the requester should be able only to requests missing information
-(send the request packet on the p2p network)
+The resolver component should be able only to respond to requests from the p2p network and the requester should 
+be able only to request missing information (send the request packet on the p2p network)
 
 ### Impact:
 * No activation epoch
-* There is a small renaming in the config.toml file, the section `[Resolvers]` was changed to `[Requesters]`
+* There is a small renaming in the `config.toml` file, the section `[Resolvers]` was changed to `[Requesters]`
 * No binary flags changes
 * No API endpoints changes
-
 
 ### Relevant PRs:
 - [#4683](https://github.com/multiversx/mx-chain-go/pull/4683) - Created requests handler for each resolver
@@ -76,14 +75,14 @@ The resolver component should be able only to respond to requests from the p2p n
 
 This feature added multikey support that will enable the node to sign on behalf of more than one key. To work, a multikey node will be required for each
 shard of the chain (including the metachain) and the exact set of keys should be given to all the nodes.
-A detailed description of the feature is available here https://docs.multiversx.com/validators/key-management/multikey-nodes
+A detailed description of the feature is available [on the multikey docs page](https://docs.multiversx.com/validators/key-management/multikey-nodes)
 
 ### Impact:
 * No activation epoch
 * In terms of the configuration files, we have this change list:
-    * in config.toml file there is a new config value PeerAuthenticationTimeBetweenChecksInSec set to 6 seconds
-    * in prefs.toml file there is a new slice section called NamedIdentity to manually specify the named identity of a set of BLS keys
-    * to work, the node will require a file called allValidatorsKeys.pem containing all handled keys
+    * in `config.toml` file there is a new config value `PeerAuthenticationTimeBetweenChecksInSec` set to 6 seconds
+    * in `prefs.toml` file there is a new slice section called `[[NamedIdentity]]` to manually specify the named identity of a set of BLS keys
+    * the node will require a file called allValidatorsKeys.pem containing all handled keys
 * No binary flags changes
 * There are four new API endpoints to provide managed keys information: `/node/managed-keys`, `/node/managed-keys/count`, `/node/managed-keys/eligible` and `/node/managed-keys/waiting`
 
@@ -117,7 +116,6 @@ the managed keys status
 - [#5371](https://github.com/multiversx/mx-chain-go/pull/5371) - Fixed a member initialization that caused panic
 - [#5375](https://github.com/multiversx/mx-chain-go/pull/5375) - Added `/node/managed-keys` endpoint
 
-
 ## 4. PubKeyConverter refactor [#4716](https://github.com/multiversx/mx-chain-go/pull/4716)
 
 The original implementation of the `pubPubkeyConverter.Encode` method did not propagate the error to its caller.
@@ -127,7 +125,7 @@ our vision for sovereign shards where each shard could have its unique human-rea
 
 ### Impact:
 * No activation epoch
-* There is a configuration option the config.toml file, the section `[AddressPubkeyConverter]` now contains a parameter called `Hrp`
+* There is a configuration option the `config.toml` file, the section `[AddressPubkeyConverter]` now contains a parameter called `Hrp`
 * No binary flags changes
 * No API endpoints changes
 
@@ -151,14 +149,84 @@ These ratings are computed by the running node and can differ from other instanc
 ### Relevant PRs:
 - [#4709](https://github.com/multiversx/mx-chain-go/pull/4709) - Components renaming, moving and integration
 - [#4755](https://github.com/multiversx/mx-chain-go/pull/4755) - Added DecreaseRating call
+- [#4780](https://github.com/multiversx/mx-chain-go/pull/4780) - Added call to decrease p2p rating and added integration test
 - [#4781](https://github.com/multiversx/mx-chain-go/pull/4781) - Added integration test and updated mx-chain-p2p-go library
 - [#5050](https://github.com/multiversx/mx-chain-go/pull/5050) - Libraries update, tests fixes & cleanup
 - [#5099](https://github.com/multiversx/mx-chain-go/pull/5099) - Integrated the new mx-chain-p2p-go to have the latest peers ratings handler
 
 ## 6. Governance v3 [#4879](https://github.com/multiversx/mx-chain-go/pull/4879)
 
-This feature simplifies the governance system smart contract
-### TODO - add description
+The voting smart contract is implemented in go, and it is running on the system VM alongside the other known 
+contract (staking, auction, delegation). The voting contract currently does not have any enforcement, 
+proposals are voted for to keep track of decisions.
+
+The contract has a config which is set at genesis time:
+```protobuf
+message GovernanceConfig {
+  int32 MinQuorum = 1 [(gogoproto.jsontag) = "MinQuorum"];
+  int32 MinPassThreshold = 2 [(gogoproto.jsontag) = "MinPassThreshold"];
+  int32 MinVetoThreshold = 3 [(gogoproto.jsontag) = "MinVetoThreshold"];
+  int32 MaxDuration = 4 [(gogoproto.jsontag) = "MaxDuration"];
+  bytes ProposalFee = 5 [(gogoproto.jsontag) = "ProposalFee", 
+}
+```
+
+`MinQuorum`, `MinPassThreshold`, `MinVetoThreshold` can be expressed in terms of either stake or voting power, 
+the result is the same.
+We also have a `MaxDuration` - which is a maximum number of epochs a proposal can run. This prevents users 
+from locking their tokens in the Governance contract for a very long time if the proposal is made 
+incorrectly or malicious with a very high duration;
+a `ProposalFee` - to prevent spam (when more community addresses are whitelisted or the governance becomes 
+completely open);
+
+General change proposal
+
+```protobuf
+message GeneralProposal {
+  bytes IssuerAddress = 1 [(gogoproto.jsontag) = "IssuerAddress"];
+  bytes GitHubCommit = 2 [(gogoproto.jsontag) = "GitHubCommit"];
+  uint64 StartVoteNonce = 3 [(gogoproto.jsontag) = "StartVoteNonce"];
+  uint64 EndVoteNonce = 4 [(gogoproto.jsontag) = "EndVoteNonce"];
+  int32 Yes = 5 [(gogoproto.jsontag) = "Yes"];
+  int32 No = 6 [(gogoproto.jsontag) = "No"];
+  int32 Veto = 7 [(gogoproto.jsontag) = "Veto"];
+  int32 Abstain = 8 [(gogoproto.jsontag) = "Abstain"];
+  bool Voted = 9 [(gogoproto.jsontag) = "Voted"];
+  repeated bytes Voters = 10 [(gogoproto.jsontag) = "Voters"];
+  bytes TopReference = 11 [(gogoproto.jsontag) = "TopReference"];
+}
+
+```
+
+Once a proposal gets registered and the proposal fee is paid - the voting can start from the start vote nonce 
+until the end vote nonce. After the `EndVotePeriod` any whitelisted address can send one more transaction in 
+order to close the proposal - at that time it will be calculated if the proposal is voted or not. With that 
+transaction all the votes for that selected proposal will be deleted from the trie.
+For every valid vote there will be a new entrance created in the trie with the key: `proposal+callerAddress`. 
+These will be deleted when a proposal is finished. `ProposalFinish` call will clean all the storage and only 
+after will set the proposal to the computed state - passed or not.
+Same proposal ("GitHub commit") cannot be set more than once.
+
+To deploy a proposal, one might use the transaction data field formatted as: 
+```
+proposal@<githubcommithash(40bytes as hex)>@startVoteEpoch@endVoteEpoch
+```
+ProposalCost: 1000eGLD
+
+User makes a transaction with `vote@<proposalX>@<VoteType>`:
+The governance contract will ask the staking, validator and delegation contracts how much stake/delegated 
+eGLD he has. From the staked/delegated eGLD we compute the voting power using the quadratic formula.
+
+The governance contract will compute the gas according to the number of storage GETS he needs to do to 
+compute the voting power for each user. The user does not need to provide how much eGLD he staked/delegated, 
+the governance contract will resolve this.
+
+For contracts like MultiversX Community Delegation, Liquid Staking contracts, we made a new endpoint called 
+`delegateVote@<proposalX>@<VoteType>@<delegateTo>@<balanceToVote>`
+
+First we compute the total staked/delegated for that contract, compute if the 
+`totalVoted += balanceToVote < totalStaked` for the contract. We assign the votes to the user the contract have 
+delegated, recomputing the user’s voting power with the quadratic formula.
 
 ### Impact:
 * No new activation epoch, will reuse the original defined one called `GovernanceEnableEpoch`
@@ -174,12 +242,16 @@ Relevant PRs:
 - [#5223](https://github.com/multiversx/mx-chain-go/pull/5223) - Added a fee when proposal is lost
 
 ## 7. DNS v2 [#5045](https://github.com/multiversx/mx-chain-go/pull/5045)
-   Integrated new DNS features 
-### TODO - add description
+
+Integrated new DNS functionalities:
+* `saveUserName` can be called multiple times, and it will change the current username of 
+the user
+* `deleteUserName` will delete the username of the user
+Both endpoints can be called only by special/whitelisted smart contracts
 
 ### Impact:
 * There is a new enable epoch definition for this feature, called `KeepExecOrderOnCreatedSCRsEnableEpoch`
-* There are changes to the configuration options in the systemSmartContractsConfig.toml file, `[GovernanceSystemSCConfig]` section
+* There are changes to the configuration options in the `systemSmartContractsConfig.toml` file, `[GovernanceSystemSCConfig]` section
 Also, the gas schedule files contain a new gas definition called `GetActiveFund`
 * No binary flags changes
 * No API endpoints changes
@@ -193,7 +265,7 @@ Also, the gas schedule files contain a new gas definition called `GetActiveFund`
 
 Refactored the WebSocket driver. The new drivers now support sending messages marshaled with json marshaller or the gogo proto marshalled.
 The new WebSocketHost implementation can run in server or client mode.
-A detailed description of the feature is available here **TODO add link**
+A detailed description of the feature is available [on the indexer docs page](https://docs.multiversx.com/sdk-and-tools/indexer)
 
 ### Impact:
 * No activation epoch
@@ -235,7 +307,7 @@ When a missing trie node is reached, sync it from the network. In this way, the 
 
 ## 10. Balance data tries [#4636](https://github.com/multiversx/mx-chain-go/pull/4636)
 
-The keys at which values are saved in a data trie are not random. Because of this, the data tries are not balanced, thus resulting in more intermediary nodes.
+The keys where the values are saved in a data trie are not random. Because of this, the data tries are not balanced, thus resulting in more intermediary nodes.
 When saving some data in the data trie, do not save at `key` but rather at `hash(key)`. This way, the keys will be random, resulting in balanced data tries.
 In order for this change to be backwards compatible, add Version field to trie nodes.
 Nodes that are accessed will be automatically migrated to the new version (where the storage key is hash(key))
@@ -245,7 +317,7 @@ Added a new API endpoint which will return true if the data trie of a specified 
 ### Impact:
 * There is a new enable epoch definition for this feature, called `AutoBalanceDataTriesEnableEpoch`
 * The gas schedule files are changed, there are 2 new gas costs added `TrieLoadPerNode` and `TrieStorePerNode`
-*No binary flags changes
+* No binary flags changes
 * There is one new API endpoint called `/address/:address/is-data-trie-migrated` that will return true if the account's data trie was migrated or false otherwise
 
 Relevant PRs:
@@ -388,7 +460,7 @@ between the nodes and the cycles request-response will be optimized.
 
 ### Impact:
 * No activation epoch
-* The p2p.toml file has been updated (removed the `[AdditionalConnections]` section) and the fullArchiveP2P.toml has been added
+* The `p2p.toml` file has been updated (removed the `[AdditionalConnections]` section) and the fullArchiveP2P.toml has been added
 * There are 2 new optional binary flags added `full-archive-p2p-config` and `full-archive-port`
 * No API endpoints changes
 
@@ -532,7 +604,6 @@ the gas schedule files are changed, there are 3 new coefficients used to compute
 ### Pull requests with no external impact:
 - [#4656](https://github.com/multiversx/mx-chain-go/pull/4656) - Changed the trie traversing strategy to DFS (Depth First Search)
 - [#4779](https://github.com/multiversx/mx-chain-go/pull/4779) - Added a benchmark that measures trie load times based on how deep the trie is
-- [#4780](https://github.com/multiversx/mx-chain-go/pull/4780) - Added call to decrease p2p rating and added integration test
 - [#4911](https://github.com/multiversx/mx-chain-go/pull/4911) - Integrated new mx-chain-p2p-go v1.0.11 library
 - [#4976](https://github.com/multiversx/mx-chain-go/pull/4976) - Minor fixes in termui: termui logs window scrolled heretically when large log lines needed to be displayed
 - [#4984](https://github.com/multiversx/mx-chain-go/pull/4984) - Refactored the trie mutex operations in order to optimize parallel trie accesses
