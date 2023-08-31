@@ -8,7 +8,7 @@ pull requests list
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the 
 external impact details
 - the **merges** area contains the list of pull requests used to update feature branches as the work progressed on 
-multiple areas at once. It is here only for reference purposes only.
+multiple areas at once. It is here for reference purposes only.
 
 # Features
 
@@ -18,8 +18,8 @@ This feature brings several changes on the way block signatures are handled duri
 Each signature share used in the aggregation of signatures for the block consensus proof, was previously individually verified.
 Assuming all validators are honest, the verification takes ~3ms per signature. In metachain, each block accumulates ~400 signatures
 which are individually checked by all participants in consensus, taking a cumulative ~1.2s CPU time for each block that passes consensus.
-This 1.2 seconds for metachain and ~200 ms for shards each round (for the synchronized nodes) can be optimized out, if instead the aggregation
-is done assuming all signature shares are valid, and verification is done on the aggregation instead.
+This 1.2 seconds required for the metachain and ~ 200 ms for the shards each round (for the synchronized nodes) can be optimized. 
+This can be achieved by assuming all signature shares are valid during aggregation, and then performing verification on the aggregated result.
 The cost of the verification of the aggregated signature was optimized by the previous PR #4314 down to ~3ms as well.
 This however can only be saved if all aggregated signatures are valid, otherwise, if the aggregated signature does not verify we will have an extra cost of 3ms,
 as the leader will aggregate first the signatures and then verify the aggregated signature. If the aggregated signature does not verify, the leader will
@@ -73,7 +73,8 @@ be able only to request missing information (send the request packet on the p2p 
 
 ## 3. Multikey [#4741](https://github.com/multiversx/mx-chain-go/pull/4741)
 
-This feature added multikey support that will enable the node to sign on behalf of more than one key. To work, a multikey node will be required for each
+This feature added multikey support that will enable the node to sign on behalf of more than one key.
+For it to function, a multikey node will be required for each
 shard of the chain (including the metachain) and the exact set of keys should be given to all the nodes.
 A detailed description of the feature is available [on the multikey docs page](https://docs.multiversx.com/validators/key-management/multikey-nodes)
 
@@ -118,7 +119,7 @@ the managed keys status
 
 ## 4. PubKeyConverter refactor [#4716](https://github.com/multiversx/mx-chain-go/pull/4716)
 
-The original implementation of the `pubPubkeyConverter.Encode` method did not propagate the error to its caller.
+The original implementation of the `PubkeyConverter.Encode` method did not propagate the error to its caller.
 Instead, it logged the error and returned an empty string. This behavior can be problematic as it might hide potential issues and security threats.
 Furthermore, the logger's presence in the PubKeyConverter constructor became unnecessary, therefore the `hrp` was given as input, especially considering
 our vision for sovereign shards where each shard could have its unique human-readable part (`hrp`).
@@ -235,7 +236,7 @@ Also, the gas schedule files contain a new gas definition called `GetActiveFund`
 * No binary flags changes
 * No API endpoints changes
 
-Relevant PRs:
+### Relevant PRs:
 - [#4910](https://github.com/multiversx/mx-chain-go/pull/4910) - Added new view functions for governance
 - [#4913](https://github.com/multiversx/mx-chain-go/pull/4913) - Linter fixes, enabled feature in test configs
 - [#4879](https://github.com/multiversx/mx-chain-go/pull/4879) - Main governance v3 branch
@@ -320,7 +321,7 @@ Added a new API endpoint which will return true if the data trie of a specified 
 * No binary flags changes
 * There is one new API endpoint called `/address/:address/is-data-trie-migrated` that will return true if the account's data trie was migrated or false otherwise
 
-Relevant PRs:
+### Relevant PRs:
 - [#4640](https://github.com/multiversx/mx-chain-go/pull/4640) - Added marshaller to trackable data trie
 - [#4633](https://github.com/multiversx/mx-chain-go/pull/4633) - Added a hasher on the NewTrackableDataTrie constructor
 - [#4680](https://github.com/multiversx/mx-chain-go/pull/4680) - Propagate enableEpochsHandler to userAccount and other components
@@ -398,7 +399,7 @@ Introduced a new API that targets bigFloats. Safe math with bigFloats, using sta
 Introduced a new API to support managed Maps for SC developers. Simple to use, all map features included.
 
 **BackTransfers:**\
-We found that we can help developers, by changing some of the paradigms regarding SC to SC execution with payments. On the old VM if parentSC called childSC and childSC
+We found that we can help developers by changing some of the paradigms regarding SC to SC execution with payments. On the old VM if parentSC called childSC and childSC
 transferred back tokens to parents it must have called a “deposit” function and parentSC had to register that deposit into a storage. After that childSC execution is finished,
 we get back into the execution of parentSC and we have to read from storage what kind of transfers the child did towards itself.
 Another problem with this is if parentSC is not payable by SC and childSC does not call deposit, only transfers, the execution will fail. This is even more complicated in
@@ -456,7 +457,7 @@ Moved the accounts implementations in their own package. Removed duplicated code
 This feature is a complete refactoring for the full archive solution. The old solution was based on the idea that full archive nodes would still
 connect on the p2p network by overriding the sharding counters but in practice, it did not perform well. This new solution relies on a secondary,
 optional p2p network on which only the full archive nodes will join. Since this network will mostly contain full archive nodes, the connection
-between the nodes and the cycles request-response will be optimized.
+between the nodes and the request-response cycles will be optimized.
 
 ### Impact:
 * No activation epoch
@@ -464,7 +465,7 @@ between the nodes and the cycles request-response will be optimized.
 * There are 2 new optional binary flags added `full-archive-p2p-config` and `full-archive-port`
 * No API endpoints changes
 
-Relevant PRs:
+### Relevant PRs:
 - [#5330](https://github.com/multiversx/mx-chain-go/pull/5330) - Handled multiple network messengers
 - [#5332](https://github.com/multiversx/mx-chain-go/pull/5332) - Updated the heartbeatV2Components to send the info on the second network
 - [#5349](https://github.com/multiversx/mx-chain-go/pull/5349) - Added an integration test on full archive network
