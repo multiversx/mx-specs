@@ -19,7 +19,7 @@ dto Transaction:
     guardian?: string;
 
     signature: bytes;
-    guardianSignature: bytes;
+    guardianSignature?: bytes;
 ```
 
 ## TransactionComputer
