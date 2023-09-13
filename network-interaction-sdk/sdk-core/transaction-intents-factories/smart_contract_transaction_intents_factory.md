@@ -12,7 +12,7 @@ class SmartContractTransactionIntentsFactory:
         bytecode: bytes OR bytecodePath: Path;
         arguments: List[object] = [];
         // Question for review: is this a valid case?
-        native_transfer_amount: (string|bigNumber) = 0;
+        native_transfer_amount: Amount = 0;
         custom_transfers: List[CustomTokenTransfer] = [];
         isUpgradeable: bool = True;
         isReadable: bool = True;
@@ -27,7 +27,7 @@ class SmartContractTransactionIntentsFactory:
         // If "function" is a reserved word in the implementing language, it should be replaced with a different name (e.g. "func" or "functionName").
         function: string;
         arguments: List[object] = [];
-        native_transfer_amount: (string|bigNumber) = 0;
+        native_transfer_amount: Amount = 0;
         custom_transfers: List[CustomTokenTransfer] = [];
         gasLimit: uint32;
     }): TransactionIntent;
@@ -38,7 +38,7 @@ class SmartContractTransactionIntentsFactory:
         bytecode: bytes OR bytecodePath: Path;
         arguments: List[object] = [];
         // Question for review: is this a valid case?
-        native_transfer_amount: (string|bigNumber) = 0;
+        native_transfer_amount: Amount = 0;
         custom_transfers: List[CustomTokenTransfer] = [];
         isUpgradeable: bool = True;
         isReadable: bool = True;

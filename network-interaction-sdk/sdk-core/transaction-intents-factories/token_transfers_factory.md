@@ -11,7 +11,7 @@ class TransferIntentsFactory:
     create_transaction_intent_for_native_transfer({
         sender: IAddress;
         receiver: IAddress;
-        native_transfer_amount: (bigNumber|string);
+        native_transfer_amount: Amount;
     }): TransactionIntent;
 
     // Can throw:

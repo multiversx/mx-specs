@@ -36,5 +36,5 @@ dto CustomTokenTransfer:
     token: CustomToken;
 
     // Always in atomic units, e.g. for transferring 1.000000 "USDC-c76f1f", it must be "1000000".
-    amount: (string|bigNumber);
+    amount: Amount;
 ```
