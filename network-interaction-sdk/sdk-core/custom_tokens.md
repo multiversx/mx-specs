@@ -23,10 +23,8 @@ class CustomTokenComputer:
     extract_token_identifier_from_extended_identifier(extended_identifier: string): string;
 
     // Given "FOO-abcdef-0a" returns "FOO".
-    extract_token_name_from_extended_identifier(extended_identifier: string): string;
-
     // Given "FOO-abcdef" returns "FOO".
-    extract_token_name_from_identifier(identifier: string): string;
+    extract_token_ticker_from_identifier(identifier: string): string;
 ```
 
 ## CustomTokenTransfer
