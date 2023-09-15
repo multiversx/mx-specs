@@ -18,6 +18,7 @@ class TransferIntentsFactory:
     // - ErrBadArguments
     //
     // All kinds of transfers (native and ESDT) should be handled.
+    // If multiple transfers are specified, a multi-ESDT transfer intent should be created.
     // Bad usage should be reported.
     create_transaction_intent_for_custom_transfers({
         sender: IAddress;

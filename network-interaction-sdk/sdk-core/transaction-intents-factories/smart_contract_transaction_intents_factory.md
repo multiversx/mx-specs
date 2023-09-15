@@ -11,7 +11,6 @@ class SmartContractTransactionIntentsFactory:
         sender: IAddress;
         bytecode: bytes OR bytecodePath: Path;
         arguments: List[object] = [];
-        // Question for review: is this a valid case?
         native_transfer_amount: Amount = 0;
         custom_transfers: List[CustomTokenTransfer] = [];
         isUpgradeable: bool = True;
@@ -37,7 +36,6 @@ class SmartContractTransactionIntentsFactory:
         contract: IAddress;
         bytecode: bytes OR bytecodePath: Path;
         arguments: List[object] = [];
-        // Question for review: is this a valid case?
         native_transfer_amount: Amount = 0;
         custom_transfers: List[CustomTokenTransfer] = [];
         isUpgradeable: bool = True;
