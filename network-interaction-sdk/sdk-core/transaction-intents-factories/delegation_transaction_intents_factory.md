@@ -10,7 +10,7 @@ class DelegationTransactionIntentsFactory:
         sender: IAddress;
         totalDelegationCap: Amount;
         service_fee: number;
-        value: Amount;
+        amount: Amount;
     }): TransactionIntent;
 
     create_transaction_intent_for_adding_nodes({
