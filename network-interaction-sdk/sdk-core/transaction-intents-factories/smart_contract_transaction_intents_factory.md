@@ -12,7 +12,6 @@ class SmartContractTransactionIntentsFactory:
         bytecode: bytes OR bytecodePath: Path;
         arguments: List[object] = [];
         native_transfer_amount: Amount = 0;
-        custom_transfers: List[CustomTokenTransfer] = [];
         isUpgradeable: bool = True;
         isReadable: bool = True;
         isPayable: bool = False;
@@ -37,7 +36,6 @@ class SmartContractTransactionIntentsFactory:
         bytecode: bytes OR bytecodePath: Path;
         arguments: List[object] = [];
         native_transfer_amount: Amount = 0;
-        custom_transfers: List[CustomTokenTransfer] = [];
         isUpgradeable: bool = True;
         isReadable: bool = True;
         isPayable: bool = False;
