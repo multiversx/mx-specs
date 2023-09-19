@@ -8,7 +8,7 @@ dto Transaction:
     chainID: string;
 
     nonce?: uint64;
-    value?: (string|bigNumber);
+    value?: Amount;
     senderUsername?: string;
     receiverUsername?: string;
     gasPrice?: uint32;
@@ -19,14 +19,14 @@ dto Transaction:
     guardian?: string;
 
     signature: bytes;
-    guardianSignature: bytes;
+    guardianSignature?: bytes;
 ```
 
 ## TransactionComputer
 
 ```
 class TransactionComputer:
-    compute_transaction_fee(transaction: Transaction, network_config: INetworkConfig): bigNumber;
+    compute_transaction_fee(transaction: Transaction, network_config: INetworkConfig): Amount;
     compute_bytes_for_signing(transaction: Transaction): bytes;
     compute_transaction_hash(transaction: Transaction): bytes;
 ```

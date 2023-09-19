@@ -8,9 +8,9 @@ class DelegationTransactionIntentsFactory:
 
     create_transaction_intent_for_new_delegation_contract({
         sender: IAddress;
-        totalDelegationCap: (string|bigNumber);
+        totalDelegationCap: Amount;
         service_fee: number;
-        value: (string|bigNumber);
+        amount: Amount;
     }): TransactionIntent;
 
     create_transaction_intent_for_adding_nodes({
