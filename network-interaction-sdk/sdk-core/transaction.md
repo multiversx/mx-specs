@@ -20,6 +20,22 @@ dto Transaction:
 
     signature: bytes;
     guardianSignature?: bytes;
+
+    // Optional named constructor, if and only if the implementing library defines a `DraftTransaction`.
+    new_from_draft(draft: DraftTransaction): Transaction;
+```
+
+## DraftTransaction
+
+Optionally, if desired, the implementing library can also define an incomplete representation of the transaction, to be used as return type for the **transaction factories**. See [README](../README.md), instead of the `Transaction` type.
+
+```
+dto DraftTransaction:
+    sender: string;
+    receiver: string;
+    value?: string;
+    data?: bytes;
+    gasLimit: uint32;
 ```
 
 ## TransactionComputer

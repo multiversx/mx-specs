@@ -8,6 +8,16 @@ This repository contains specifications for the `mx-sdk-*` libraries. The specif
 - `sdk-wallet`: core wallet components (generation, signing).
 - `sdk-network-providers`: Network Provider (API, Gateway) components.
 
+Below, we add specific details for some of the most important packages and sub-components.
+
+### Transactions Factories
+
+These components are located in `sdk-core/transactions-factories` and are responsible with creating transactions for specific use cases. They are designed as _multi-factory_ classes, having methods that return a `Transaction` object constructed by following specific recipes (with respect to the Protocol). 
+
+The methods are named in correspondence with the use cases they implement, e.g. `create_transaction_for_native_transfer()` or `create_transaction_for_new_delegation_contract()`. They return a `Transaction` (data transfer object), where `sender`, `receiver`, `value`, `data` and `gasLimit` are properly set (upon eventual computation, where applicable).
+
+Optionally, the implementing library can choose to return an object that isn't a complete representation of the `Transaction`, if desired. In this case, the library must name the incomplete representation `DraftTransaction`, and also must provide a direct conversion facility from `DraftTransaction` to `Transaction` - for example, a named constructor. See [transaction](sdk-core/transaction.md).
+
 ## Guidelines
 
 ###  **`in-ifaces-out-concrete-types`**
