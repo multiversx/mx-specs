@@ -22,6 +22,17 @@ dto Transaction:
     guardianSignature?: bytes;
 ```
 
+## DraftTransaction
+
+```
+dto DraftTransaction:
+    sender: string;
+    receiver: string;
+    value?: string;
+    data?: bytes;
+    gasLimit: uint32;
+```
+
 ## TransactionComputer
 
 ```
