@@ -8,21 +8,20 @@ class TransferTransactionsFactory:
     // Generally speaking, the constructor should be parametrized with a configuration object which defines entries such as:
     // "minGasLimit", "gasLimitPerByte", "issueCost", gas limit for specific operations etc. (e.g. "gasLimitForESDTTransfer").
     
-    create_transaction_for_native_transfer({
+    create_transaction_for_native_token_transfer({
         sender: IAddress;
         receiver: IAddress;
-        native_transfer_amount: Amount;
+        native_amount: Amount;
     }): Transaction;
 
     // Can throw:
     // - ErrBadArguments
     //
-    // All kinds of transfers (native and ESDT) should be handled.
     // If multiple transfers are specified, a multi-ESDT transfer transaction should be created.
     // Bad usage should be reported.
-    create_transaction_for_custom_transfers({
+    create_transaction_for_esdt_token_transfer({
         sender: IAddress;
         receiver: IAddress;
-        custom_transfers: CustomTokenTransfer[];
+        token_transfers: TokenTransfer[];
     }): Transaction;
 ```
