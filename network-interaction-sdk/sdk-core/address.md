@@ -50,10 +50,6 @@ print("Public key (hex-encoded):", address.hex())
 class AddressFactory:
     constructor(hrp: string = "erd");
 
-    // Creates an address with all bytes set to zero.
-    // This is the same as the "contract deployment address".
-    create_zero(): Address;
-
     // Creates an address from a bech32 string.
     create_from_bech32(value: string): Address;
 
