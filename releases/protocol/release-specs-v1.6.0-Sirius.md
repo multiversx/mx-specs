@@ -107,6 +107,8 @@ A detailed description of the feature is available [on the multikey docs page](h
 - [#4947](https://github.com/multiversx/mx-chain-go/pull/4947) - Added IsMultiKeyMode method to ManagedPeersHolder interface, added more unit tests
 - [#5057](https://github.com/multiversx/mx-chain-go/pull/5057) - Proper releases for used libraries
 - [#5574](https://github.com/multiversx/mx-chain-go/pull/5574) - Fixed the heartbeat messages for the identities handled by the multikey node
+- [#5597](https://github.com/multiversx/mx-chain-go/pull/5597) - Fixed managed peers holder to avoid panics in case of a badly configured node
+- [#5601](https://github.com/multiversx/mx-chain-go/pull/5601) - Fixed issues between the multikey feature and the redundancy sub-system
 
 There is a related feature called feat/multikey metrics [#5362](https://github.com/multiversx/mx-chain-go/pull/5362) that added new API endpoint routes to provide information regarding
 the managed keys status
@@ -155,6 +157,7 @@ These ratings are computed by the running node and can differ from other instanc
 - [#4781](https://github.com/multiversx/mx-chain-go/pull/4781) - Added integration test and updated mx-chain-p2p-go library
 - [#5050](https://github.com/multiversx/mx-chain-go/pull/5050) - Libraries update, tests fixes & cleanup
 - [#5099](https://github.com/multiversx/mx-chain-go/pull/5099) - Integrated the new mx-chain-p2p-go to have the latest peers ratings handler
+- [#5587](https://github.com/multiversx/mx-chain-go/pull/5587) - Added new p2p metrics, fixed a bad logging in the p2p components
 
 ## 6. Governance v3 [#4879](https://github.com/multiversx/mx-chain-go/pull/4879)
 
@@ -287,6 +290,7 @@ A detailed description of the feature is available [on the indexer docs page](ht
 - [#5384](https://github.com/multiversx/mx-chain-go/pull/5384) - Added the possibility to define a set of WebSocket host drivers instead of just one
 - [#5547](https://github.com/multiversx/mx-chain-go/pull/5547) - Added & populated new field in `AccountAdditionalData` structure 
 - [#5580](https://github.com/multiversx/mx-chain-go/pull/5580) - Integrated new indexer version
+- [#5594](https://github.com/multiversx/mx-chain-go/pull/5594) - Added versioning for WebSocket message
 
 ## 9. Sync missing trie nodes [#4616](https://github.com/multiversx/mx-chain-go/pull/4616)
 If there was a bug during processing and a trie node was missing (either because it was deleted or because it was never saved in the first place),
@@ -344,6 +348,7 @@ Added a new API endpoint which will return true if the data trie of a specified 
 - [#5242](https://github.com/multiversx/mx-chain-go/pull/5242) - Small stats refactor
 - [#5282](https://github.com/multiversx/mx-chain-go/pull/5282) - Changed the epoch in which autoBalanceDataTries is enabled
 - [#5298](https://github.com/multiversx/mx-chain-go/pull/5298) - Proper releases for libraries
+- [#5611](https://github.com/multiversx/mx-chain-go/pull/5611) - Fixed an edge-case related to trie pruning + migrate data trie + revert  
 
 ## 11. Sharded persister [#5010](https://github.com/multiversx/mx-chain-go/pull/5010)
 
@@ -483,6 +488,7 @@ between the nodes and the request-response cycles will be optimized.
 - [#5441](https://github.com/multiversx/mx-chain-go/pull/5441) - New version for the mx-chain-communication-go library
 - [#5446](https://github.com/multiversx/mx-chain-go/pull/5446) - Proper tags
 - [#5448](https://github.com/multiversx/mx-chain-go/pull/5448) - Fixed local testnet scripts
+- [#5604](https://github.com/multiversx/mx-chain-go/pull/5604) - Added a fallback request option while syncing old epochs data
 
 ## 16. VM-query with block coordinates [#5512](https://github.com/multiversx/mx-chain-go/pull/5512)
 
@@ -644,6 +650,12 @@ value is now a string and should contain the data as a number in base 10 format
 the gas schedule files are changed, there are 3 new coefficients used to compute the gas cost based on the trie depth
 
 
+- [#5589](https://github.com/multiversx/mx-chain-go/pull/5589) - Fix an inconsistency for an NFT collection that happened after
+the call to `stopNFTCreate` builtin-function
+
+  **Impact:** There is a new enable epoch definition for this feature, called `NFTStopCreateEnableEpoch`
+
+
 ### Pull requests with no external impact:
 - [#4656](https://github.com/multiversx/mx-chain-go/pull/4656) - Changed the trie traversing strategy to DFS (Depth First Search)
 - [#4779](https://github.com/multiversx/mx-chain-go/pull/4779) - Added a benchmark that measures trie load times based on how deep the trie is
@@ -695,6 +707,7 @@ the gas schedule files are changed, there are 3 new coefficients used to compute
 - [#5544](https://github.com/multiversx/mx-chain-go/pull/5544) - Extended the search for the full history resolver in case the epoch is wrongly provided
 - [#5546](https://github.com/multiversx/mx-chain-go/pull/5546) - Linter fixes
 - [#5509](https://github.com/multiversx/mx-chain-go/pull/5509) - Update library version for the syndtr/goleveldb library
+- [#5595](https://github.com/multiversx/mx-chain-go/pull/5595) - Fixed the edge-case that a snapshot was started twice
 
 # Merges
 
