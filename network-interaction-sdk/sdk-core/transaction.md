@@ -36,6 +36,7 @@ dto DraftTransaction:
     value?: string;
     data?: bytes;
     gasLimit: uint32;
+    chainID: string; // The chain ID from the factory's config (received in the constructor) should be used
 ```
 
 ## TransactionComputer
