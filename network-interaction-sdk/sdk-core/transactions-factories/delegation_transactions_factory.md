@@ -109,13 +109,13 @@ class DelegationTransactionsFactory:
     create_transaction_for_undelegating({
         sender: IAddress;
         delegationContract: IAddres;
-        amount_to_undelegate: Amount;
+        amount: Amount;
     }): Transaction;
 
     create_transaction_for_withdrawing({
         sender: IAddress;
         delegationContract: IAddress;
-    })
+    }): Transaction;
 
     ...
 ```
