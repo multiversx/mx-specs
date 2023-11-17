@@ -93,7 +93,7 @@ class DelegationTransactionsFactory:
     create_transaction_for_delegating({
         sender: IAddress;
         delegationContract: IAddress;
-        value: Amount;
+        amount: Amount;
     }): Transaction;
 
     create_transaction_for_claiming_rewards({
