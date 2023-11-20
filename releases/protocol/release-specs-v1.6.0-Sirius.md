@@ -652,10 +652,26 @@ value is now a string and should contain the data as a number in base 10 format
 the gas schedule files are changed, there are 3 new coefficients used to compute the gas cost based on the trie depth
 
 
-- [#5589](https://github.com/multiversx/mx-chain-go/pull/5589) - Fix an inconsistency for an NFT collection that happened after
+- [#5589](https://github.com/multiversx/mx-chain-go/pull/5589) - Fixed an inconsistency for an NFT collection that happened after
 the call to `stopNFTCreate` builtin-function
 
-  **Impact:** There is a new enable epoch definition for this feature, called `NFTStopCreateEnableEpoch`
+  **Impact:** There is a new enable epoch definition for this fix, called `NFTStopCreateEnableEpoch`
+
+
+- [#5667](https://github.com/multiversx/mx-chain-go/pull/5667) - Fixed change owner address for a smartcontract when it is called
+cross shard.
+
+  **Impact:** There is a new enable epoch definition for this fix, called `ChangeOwnerAddressCrossShardThroughSCEnableEpoch`
+
+
+- [#5711](https://github.com/multiversx/mx-chain-go/pull/5711) - Add resource limiter config in p2p.toml files
+
+  **Impact:** There are changes in the p2p.toml file as there is a new section [Node.ResourceLimiter] to be used with this feature
+
+
+- [#5713](https://github.com/multiversx/mx-chain-go/pull/5713) - Fixed the `SaveKeyValue` builtin function cost computation.
+
+  **Impact:** There is a new enable epoch definition for this fix, called `FixGasRemainingForSaveKeyValueBuiltinFunctionEnableEpoch`
 
 
 ### Pull requests with no external impact:
@@ -719,6 +735,13 @@ the call to `stopNFTCreate` builtin-function
 - [#5464](https://github.com/multiversx/mx-chain-go/pull/5464) - Integrated the new NTP library v1.3.0
 - [#5176](https://github.com/multiversx/mx-chain-go/pull/5176) - Improve requesting of missing miniblocks where the destination is self
 - [#5655](https://github.com/multiversx/mx-chain-go/pull/5655) - Fixed create release workflow
+- [#5659](https://github.com/multiversx/mx-chain-go/pull/5659) - Update guardians tx construction example
+- [#5668](https://github.com/multiversx/mx-chain-go/pull/5668) - Integrated the new mx-chain-crypto-go library v1.2.9
+- [#5686](https://github.com/multiversx/mx-chain-go/pull/5686) - Reference mx-chain-core-go version with removed omitempty for guarded API field
+- [#5701](https://github.com/multiversx/mx-chain-go/pull/5701) - Fixed web server closing when the web server is disabled
+- [#5695](https://github.com/multiversx/mx-chain-go/pull/5695) - Added extra checks for async arguments to avoid panic
+- [#5710](https://github.com/multiversx/mx-chain-go/pull/5710) - Fixed the overridable configs when dealing with int32 parameters
+- [#5688](https://github.com/multiversx/mx-chain-go/pull/5688) - Integrated the new mx-chain-communication-go v1.0.12 and mx-chain-es-indexer-go v1.4.16 libraries
 
 # Merges
 
@@ -857,3 +880,5 @@ to be the single feature merged in the new `rc/v1.5.0` branch
 - [#5538](https://github.com/multiversx/mx-chain-go/pull/5538) - Part of the feat/transaction-ordering-on-execution
 - [#5554](https://github.com/multiversx/mx-chain-go/pull/5554) - Part of the feat/transaction-ordering-on-execution
 - [#5555](https://github.com/multiversx/mx-chain-go/pull/5555) - Part of the feat/transaction-ordering-on-execution
+- [#5687](https://github.com/multiversx/mx-chain-go/pull/5687) - Merge master -> rc/v1.6.0
+- [#5724](https://github.com/multiversx/mx-chain-go/pull/5724) - Merge master -> rc/v1.6.0
