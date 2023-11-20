@@ -340,7 +340,7 @@ Added a new API endpoint which will return true if the data trie of a specified 
 - [#4809](https://github.com/multiversx/mx-chain-go/pull/4809) - Added unit tests for trie nodes versioning
 - [#4962](https://github.com/multiversx/mx-chain-go/pull/4962) - Refactored trackableDataTrie so that it can handle the trie nodes migration process in a generalized manner
 - [#5056](https://github.com/multiversx/mx-chain-go/pull/5056) - Added the possibility to collect stats about trie nodes version during state snapshot.
-- [#5115](https://github.com/multiversx/mx-chain-go/pull/5115) - Added tests for migrateDataTrie built in function
+- [#5115](https://github.com/multiversx/mx-chain-go/pull/5115) - Added tests for migrateDataTrie built-in function
 - [#5127](https://github.com/multiversx/mx-chain-go/pull/5127) - Added an API endpoint which returns the status of the data trie migration
 - [#5180](https://github.com/multiversx/mx-chain-go/pull/5180) - Updated libraries
 - [#5194](https://github.com/multiversx/mx-chain-go/pull/5194) - Fixed a case in which Delete() is called twice in a row for the same key, code cleanup
@@ -349,6 +349,7 @@ Added a new API endpoint which will return true if the data trie of a specified 
 - [#5282](https://github.com/multiversx/mx-chain-go/pull/5282) - Changed the epoch in which autoBalanceDataTries is enabled
 - [#5298](https://github.com/multiversx/mx-chain-go/pull/5298) - Proper releases for libraries
 - [#5611](https://github.com/multiversx/mx-chain-go/pull/5611) - Fixed an edge-case related to trie pruning + migrate data trie + revert  
+- [#5579](https://github.com/multiversx/mx-chain-go/pull/5579) - Changed gas cost for migrate data trie built-in function
 
 ## 11. Sharded persister [#5010](https://github.com/multiversx/mx-chain-go/pull/5010)
 
@@ -445,6 +446,7 @@ called `DisableAsyncCallV1`
 - [#5326](https://github.com/multiversx/mx-chain-go/pull/5326) - Fixes after merge
 - [#5353](https://github.com/multiversx/mx-chain-go/pull/5353) - Integrated new VM library, added new gas costs
 - [#5427](https://github.com/multiversx/mx-chain-go/pull/5427) - Implemented the no-payable check in VM for the back-transfers feature
+- [#5632](https://github.com/multiversx/mx-chain-go/pull/5632) - Integrated new VM v1.5.12 library, minor governance system fix
 
 ## 14. State package refactor [#5334](https://github.com/multiversx/mx-chain-go/pull/5334)
 Moved the accounts implementations in their own package. Removed duplicated code and increased code readability.
@@ -708,6 +710,15 @@ the call to `stopNFTCreate` builtin-function
 - [#5546](https://github.com/multiversx/mx-chain-go/pull/5546) - Linter fixes
 - [#5509](https://github.com/multiversx/mx-chain-go/pull/5509) - Update library version for the syndtr/goleveldb library
 - [#5595](https://github.com/multiversx/mx-chain-go/pull/5595) - Fixed the edge-case that a snapshot was started twice
+- [#5613](https://github.com/multiversx/mx-chain-go/pull/5613) - Added round in hyperblock transactions
+- [#5469](https://github.com/multiversx/mx-chain-go/pull/5469) - Updated node's dockerfile
+- [#5618](https://github.com/multiversx/mx-chain-go/pull/5618) - Adjust `account not found` error when sending a transaction
+- [#5651](https://github.com/multiversx/mx-chain-go/pull/5651) - Added transaction hash test example with guardian
+- [#5648](https://github.com/multiversx/mx-chain-go/pull/5648) - Changed `MaxTxNonceDeltaAllowed` constant
+- [#5358](https://github.com/multiversx/mx-chain-go/pull/5358) - Added extra test validators keys
+- [#5464](https://github.com/multiversx/mx-chain-go/pull/5464) - Integrated the new NTP library v1.3.0
+- [#5176](https://github.com/multiversx/mx-chain-go/pull/5176) - Improve requesting of missing miniblocks where the destination is self
+- [#5655](https://github.com/multiversx/mx-chain-go/pull/5655) - Fixed create release workflow
 
 # Merges
 
