@@ -90,5 +90,32 @@ class DelegationTransactionsFactory:
         identifier: str;
     }): Transaction;
 
+    create_transaction_for_delegating({
+        sender: IAddress;
+        delegationContract: IAddress;
+        amount: Amount;
+    }): Transaction;
+
+    create_transaction_for_claiming_rewards({
+        sender: IAddress;
+        delegationContract: IAddress;
+    }): Transaction;
+
+    create_transaction_for_redelegating_rewards({
+        sender: IAddress;
+        delegationContract: IAddress;
+    }): Transaction;
+
+    create_transaction_for_undelegating({
+        sender: IAddress;
+        delegationContract: IAddres;
+        amount: Amount;
+    }): Transaction;
+
+    create_transaction_for_withdrawing({
+        sender: IAddress;
+        delegationContract: IAddress;
+    }): Transaction;
+
     ...
 ```
