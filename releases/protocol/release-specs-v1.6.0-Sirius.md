@@ -447,6 +447,7 @@ called `DisableAsyncCallV1`
 - [#5353](https://github.com/multiversx/mx-chain-go/pull/5353) - Integrated new VM library, added new gas costs
 - [#5427](https://github.com/multiversx/mx-chain-go/pull/5427) - Implemented the no-payable check in VM for the back-transfers feature
 - [#5632](https://github.com/multiversx/mx-chain-go/pull/5632) - Integrated new VM v1.5.12 library, minor governance system fix
+- [#5736](https://github.com/multiversx/mx-chain-go/pull/5736) - Integrated new VM v1.5.21 library
 
 ## 14. State package refactor [#5334](https://github.com/multiversx/mx-chain-go/pull/5334)
 Moved the accounts implementations in their own package. Removed duplicated code and increased code readability.
@@ -742,6 +743,7 @@ cross shard.
 - [#5695](https://github.com/multiversx/mx-chain-go/pull/5695) - Added extra checks for async arguments to avoid panic
 - [#5710](https://github.com/multiversx/mx-chain-go/pull/5710) - Fixed the overridable configs when dealing with int32 parameters
 - [#5688](https://github.com/multiversx/mx-chain-go/pull/5688) - Integrated the new mx-chain-communication-go v1.0.12 and mx-chain-es-indexer-go v1.4.16 libraries
+- [#5733](https://github.com/multiversx/mx-chain-go/pull/5733) - Added `randSeed` and `prevRandSeed` on the APIBlock structure
 
 # Merges
 
