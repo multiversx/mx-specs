@@ -1,24 +1,18 @@
 ## Mnemonic
 
-This component allows one to load / parse / validate an existing one. 
-
-It also allows one to derive a secret key from the mnemonic.
+This component allows one to load / parse an existing mnemonic.
 
 ```
 class Mnemonic:
     // At least one of the following constructors should be implemented.
-    // The constructor(s) should also trim whitespace and validate the mnemonic.
+    // The constructor(s) should also trim whitespace.
     constructor(text: string);
     constructor(words: string[]);
 
     // Alternatively, named constructors can be used:
     static newfromText(text: string): Mnemonic;
     static newfromWords(words: string[]): Mnemonic;
-
-    // Can throw:
-    // - ErrInvalidMnemonic
-    derive_secret_key(address_index: number = 0, passphrase: string = ""): ISecretKey
-
+    
     // Gets the mnemonic words.
     getWords(): string[];
 
