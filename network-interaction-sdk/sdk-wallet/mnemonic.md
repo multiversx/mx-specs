@@ -37,7 +37,9 @@ class MnemonicComputer implements IMnemonicComputer:
 
     // Can throw:
     // - ErrInvalidMnemonic
-    derive_secret_key_from_mnemonic(mnemonic: Mnemonic, address_index: int, passphrase: string): ISecretKey
+    // Below, "passphrase" is the optional bip39 passphrase used to derive a secret key from a mnemonic.
+    // Reference: https://en.bitcoin.it/wiki/Seed_phrase#Two-factor_seed_phrases
+    derive_secret_key_from_mnemonic(mnemonic: Mnemonic, address_index: int, passphrase: string = ""): ISecretKey
 ```
 
 ## Examples of usage
