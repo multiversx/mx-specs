@@ -1,7 +1,10 @@
 ## UserWalletProvider
 
 ```
-class UserWalletProvider:
+class UserWalletProvider implements IWalletProvider:
+    // The constructor is not captured by the specs; it's up to the implementing library to define it.
+    // For example, the constructor can be parametrized with underlying, more low-level crypto components, if applicable.
+
     // Should not throw.
     generate_keypair(): (ISecretKey, IPublicKey)
 
@@ -15,19 +18,14 @@ class UserWalletProvider:
     verify(data: bytes, signature: bytes, public_key: IPublicKey): bool
 
     // Can throw:
-    // - ErrInvalidSecretKey
+    // - ErrInvalidSecretKeyBytes
     create_secret_key_from_bytes(data: bytes): ISecretKey
 
     // Can throw:
-    // - ErrInvalidPublicKey
+    // - ErrInvalidPublicKeyBytes
     create_public_key_from_bytes(data: bytes): IPublicKey
 
     // Can throw:
     // - ErrInvalidSecretKey
     compute_public_key_from_secret_key(secret_key: ISecretKey): IPublicKey
-
-    // Should not throw.
-    generate_mnemonic(): Mnemonic
 ```
-
-Generally speaking, `generate_mnemonic` and `derive_secret_key_from_mnemonic` are only available in the `UserWalletProvider` (that is, they are not available in `ValidatorWalletProvider`).

@@ -5,20 +5,20 @@ class EncryptedKeystore:
     // The constructor is not captured by the specs; it's up to the implementing library to define it.
 
     // Named constructor
-    static new_from_secret_key(secret_key: ISecretKey): Keystore
+    static new_from_secret_key(secret_key: ISecretKey): EncryptedKeystore
 
     // Named constructor
     // Below, "wallet_provider" should implement "derive_secret_key_from_mnemonic()".
     // Advice: in the implementation all the parameters will be held as instance state (private fields).
-    static new_from_mnemonic(wallet_provider: IWalletProvider, mnemonic: Mnemonic): Keystore
+    static new_from_mnemonic(wallet_provider: IWalletProvider, mnemonic: Mnemonic): EncryptedKeystore
 
     // Importing "constructor"
-    static import_from_object(wallet_provider: IWalletProvider, object: KeyfileObject, password: string): Keystore
+    static import_from_object(wallet_provider: IWalletProvider, object: KeyfileObject, password: string): EncryptedKeystore
 
     // Importing "constructor"
-    static import_from_file(wallet_provider: IWalletProvider, path: Path, password: string): Keystore
+    static import_from_file(wallet_provider: IWalletProvider, path: Path, password: string): EncryptedKeystore
 
-    // When kind == 'secretKey', only index == 0 is supported.
+    // When kind == 'secretKey', only index == 0 and passphrase == "" is supported.
     // When kind == 'mnemonic', secret key derivation happens under the hood.
     // Below, "passphrase" is the bip39 passphrase required to derive a secret key from a mnemonic (by default, it should be an empty string).
     get_secret_key(index: int, passphrase: string): ISecretKey
@@ -86,8 +86,6 @@ dto KeyfileObject:
         mac: string;
     };
 ```
-
-TBD: Can we perhaps adjust `EncryptedData` to be more compatible with `KeyfileObject.crypto`?
 
 ## Examples of usage
 
