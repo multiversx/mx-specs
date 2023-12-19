@@ -5,16 +5,17 @@ class RelayedTransactionsFactory:
     // Generally speaking, the constructor should be parametrized with a configuration object which defines entries such as:
     // "minGasLimit", "gasLimitPerByte", gas limit for specific operations etc.
 
+    // Each implementation is responsible to check that each inner transaction is signed.
+    // Can throw InvalidInnerTransactionError
+
     create_relayed_v1_transaction({
         inner_transaction: ITransaction;
         relayer_address: IAddress;
-        relayer_nonce: Optional[int];
     }): Transaction;
 
-    // can throw InvalidGasLimitForInnerTransaction
+    // can throw InvalidInnerTransactionError if inner_transaction.gas_limit != 0
     create_relayed_v2_transaction({
         inner_transaction: ITransaction;
         inner_transaction_gas_limit: uint32;
         relayer_address: IAddress;
-        relayer_nonce: Optional[int];
     });
