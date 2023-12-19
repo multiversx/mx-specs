@@ -14,6 +14,7 @@ class RelayedTransactionsFactory:
     // can throw InvalidGasLimitForInnerTransaction
     create_relayed_v2_transaction({
         inner_transaction: ITransaction;
+        inner_transaction_gas_limit: uint32;
         relayer_address: IAddress;
         relayer_nonce: Optional[int];
     });
