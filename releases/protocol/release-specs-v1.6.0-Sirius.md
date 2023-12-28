@@ -10,6 +10,8 @@ external impact details
 - the **merges** area contains the list of pull requests used to update feature branches as the work progressed on 
 multiple areas at once. It is here for reference purposes only.
 
+This documentation is relevant for the `tags/v1.6.7` tag release.
+
 # Features
 
 ## 1. Optimise consensus signature check [#4467](https://github.com/multiversx/mx-chain-go/pull/4467)
@@ -109,6 +111,7 @@ A detailed description of the feature is available [on the multikey docs page](h
 - [#5574](https://github.com/multiversx/mx-chain-go/pull/5574) - Fixed the heartbeat messages for the identities handled by the multikey node
 - [#5597](https://github.com/multiversx/mx-chain-go/pull/5597) - Fixed managed peers holder to avoid panics in case of a badly configured node
 - [#5601](https://github.com/multiversx/mx-chain-go/pull/5601) - Fixed issues between the multikey feature and the redundancy sub-system
+- [#5782](https://github.com/multiversx/mx-chain-go/pull/5782) - Fixed managed peers holder
 
 There is a related feature called feat/multikey metrics [#5362](https://github.com/multiversx/mx-chain-go/pull/5362) that added new API endpoint routes to provide information regarding
 the managed keys status
@@ -220,7 +223,7 @@ ProposalCost: 1000eGLD
 
 User makes a transaction with `vote@<proposalX>@<VoteType>`:
 The governance contract will ask the staking, validator and delegation contracts how much stake/delegated 
-eGLD he has. From the staked/delegated eGLD we compute the voting power using the quadratic formula.
+eGLD he has. From the staked/delegated eGLD we compute the voting power using the linear formula.
 
 The governance contract will compute the gas according to the number of storage GETS he needs to do to 
 compute the voting power for each user. The user does not need to provide how much eGLD he staked/delegated, 
@@ -245,6 +248,7 @@ Also, the gas schedule files contain a new gas definition called `GetActiveFund`
 - [#4913](https://github.com/multiversx/mx-chain-go/pull/4913) - Linter fixes, enabled feature in test configs
 - [#4879](https://github.com/multiversx/mx-chain-go/pull/4879) - Main governance v3 branch
 - [#5223](https://github.com/multiversx/mx-chain-go/pull/5223) - Added a fee when proposal is lost
+- [#5750](https://github.com/multiversx/mx-chain-go/pull/5750) - Governance fixes
 
 ## 7. DNS v2 [#5045](https://github.com/multiversx/mx-chain-go/pull/5045)
 
@@ -368,6 +372,7 @@ where the data shards reside. This split will improve data access, especially wh
 - [#5002](https://github.com/multiversx/mx-chain-go/pull/5002) - Set sharded DB setup per each storer separately
 - [#5210](https://github.com/multiversx/mx-chain-go/pull/5210) - Cleanup unused code
 - [#5543](https://github.com/multiversx/mx-chain-go/pull/5543) - Activated sharded persister for the UserAccounts and PeerAccounts tries
+- [#5751](https://github.com/multiversx/mx-chain-go/pull/5751) - Use sharded persister for static storer
 
 ## 12. Trie sync optimizations [#5291](https://github.com/multiversx/mx-chain-go/pull/5291)
 
@@ -744,6 +749,11 @@ cross shard.
 - [#5710](https://github.com/multiversx/mx-chain-go/pull/5710) - Fixed the overridable configs when dealing with int32 parameters
 - [#5688](https://github.com/multiversx/mx-chain-go/pull/5688) - Integrated the new mx-chain-communication-go v1.0.12 and mx-chain-es-indexer-go v1.4.16 libraries
 - [#5733](https://github.com/multiversx/mx-chain-go/pull/5733) - Added `randSeed` and `prevRandSeed` on the APIBlock structure
+- [#5746](https://github.com/multiversx/mx-chain-go/pull/5746) - Added "burn role for all" log event
+- [#5749](https://github.com/multiversx/mx-chain-go/pull/5749) - Handle notifier revert data with new data payload structure 
+- [#5761](https://github.com/multiversx/mx-chain-go/pull/5761) - Fixed forgotten mutexes Unlock calls
+- [#5765](https://github.com/multiversx/mx-chain-go/pull/5765) - Updated VMs libraries
+- [#5764](https://github.com/multiversx/mx-chain-go/pull/5764) - Fix snapshots manager
 
 # Merges
 
