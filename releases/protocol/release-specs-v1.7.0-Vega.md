@@ -8,7 +8,7 @@ This document explains the contents of the rc/v1.7.0 release codenamed Vega. It 
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the
   external impact details
 
-This documentation is relevant for the `tags/v1.7.8` tag release.
+This documentation is relevant for the `tags/v1.7.10` tag release.
 
 # Features
 
@@ -98,6 +98,8 @@ The official staking-v4 docs are found [here](https://docs.multiversx.com/valida
 - [#3822](https://github.com/multiversx/mx-chain-go/pull/3822) - Filter auction nodes list
 - [#3818](https://github.com/multiversx/mx-chain-go/pull/3818) - Staking v4 init auction nodes list
 - [#3447](https://github.com/multiversx/mx-chain-go/pull/3447) - Added stake operation limitations
+- [#6114](https://github.com/multiversx/mx-chain-go/pull/6114) - POC: Distribute to waiting from auction based on leaving nodes
+- [#5953](https://github.com/multiversx/mx-chain-go/pull/5953) - MaxDelegationCap tests
 
 ## 2. Enable epochs component refactor [#5419](https://github.com/multiversx/mx-chain-go/pull/5419)
 
@@ -168,6 +170,9 @@ The integration can be used from [here](https://github.com/multiversx/mx-chain-s
 - [#5573](https://github.com/multiversx/mx-chain-go/pull/5573) - Status Core Components and State Components
 - [#5563](https://github.com/multiversx/mx-chain-go/pull/5563) - Initialize core components
 - [#5552](https://github.com/multiversx/mx-chain-go/pull/5552) - TestOnlyProcessingNode - part 1
+- [#6061](https://github.com/multiversx/mx-chain-go/pull/6061) - Host driver option
+- [#6092](https://github.com/multiversx/mx-chain-go/pull/6092) - Integration tests multiple packages
+- [#6126](https://github.com/multiversx/mx-chain-go/pull/6126) - Fixed the initialization of the chain simulator when working with 0-value activation epochs
 
 # Smaller features or fixes
 
@@ -200,3 +205,8 @@ The integration can be used from [here](https://github.com/multiversx/mx-chain-s
 - [#5642](https://github.com/multiversx/mx-chain-go/pull/5642) - LastSnapshot marker fix
 - [#5649](https://github.com/multiversx/mx-chain-go/pull/5649) - Replace SendTxRequest with FrontendTransaction
 - [#5901](https://github.com/multiversx/mx-chain-go/pull/5901) - Add missing state statistics field to config file
+- [#6141](https://github.com/multiversx/mx-chain-go/pull/6141) - Fix genesis flags
+- [#6108](https://github.com/multiversx/mx-chain-go/pull/6108) - Added block timestamp + scripts update for the round duration
+- [#6104](https://github.com/multiversx/mx-chain-go/pull/6104) - Fixed backwards compatibility problem
+- [#6122](https://github.com/multiversx/mx-chain-go/pull/6122) - Update x/crypto to v0.21.0
+- [#6123](https://github.com/multiversx/mx-chain-go/pull/6123) - Add withKeys option on account
