@@ -61,7 +61,7 @@ The improvements implemented on ESDTs enable the dynamic NFT functionality.
 - [#6242](https://github.com/multiversx/mx-chain-go/pull/6242) - Add esdt token type api
 - [#6220](https://github.com/multiversx/mx-chain-go/pull/6220) - Token type in altered accounts
 
-## 3. Crypto API and new Opcodes [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
+## 3. Crypto API, new Opcodes and EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
 
 With this feature, new opcodes were enabled for developers, among with new crypto endpoints(`VerifySecp256r1`, `VerifyBLSSignatureShare`, `VerifyBLSMultiSig`).
 Another improvement was EGLD as part of MultiESDTTransfer (EGLD-000000).
