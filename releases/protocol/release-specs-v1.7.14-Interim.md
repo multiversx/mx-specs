@@ -1,4 +1,4 @@
-[comment]: <> (tags/v1.7.14)
+[comment]: <> (tags/v1.7.15)
 
 # Contents
 
@@ -8,7 +8,7 @@ This document explains the contents of the rc/v1.7.next1 release codenamed Inter
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the
   external impact details
 
-This documentation is relevant for the `tags/v1.7.14` tag release.
+This documentation is relevant for the `tags/v1.7.15` tag release.
 
 # Features
 
@@ -60,6 +60,7 @@ The improvements implemented on ESDTs enable the dynamic NFT functionality.
 - [#6263](https://github.com/multiversx/mx-chain-go/pull/6263) - Add more testing scenarios
 - [#6242](https://github.com/multiversx/mx-chain-go/pull/6242) - Add esdt token type api
 - [#6220](https://github.com/multiversx/mx-chain-go/pull/6220) - Token type in altered accounts
+- [#6350](https://github.com/multiversx/mx-chain-go/pull/6350) - Fix missing role + Use setSpecialRole function in tests
 
 ## 3. Crypto API, new Opcodes and EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
 
