@@ -1,4 +1,4 @@
-[comment]: <> (tags/v1.7.15)
+[comment]: <> (tags/v1.7.16)
 
 # Contents
 
@@ -8,7 +8,7 @@ This document explains the contents of the rc/v1.7.next1 release codenamed Inter
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the
   external impact details
 
-This documentation is relevant for the `tags/v1.7.15` tag release.
+This documentation is relevant for the `tags/v1.7.16` tag release.
 
 # Features
 
@@ -61,6 +61,7 @@ The improvements implemented on ESDTs enable the dynamic NFT functionality.
 - [#6242](https://github.com/multiversx/mx-chain-go/pull/6242) - Add esdt token type api
 - [#6220](https://github.com/multiversx/mx-chain-go/pull/6220) - Token type in altered accounts
 - [#6350](https://github.com/multiversx/mx-chain-go/pull/6350) - Fix missing role + Use setSpecialRole function in tests
+- [#6357](https://github.com/multiversx/mx-chain-go/pull/6357) - Dynamic roles singular
 
 ## 3. Crypto API, new Opcodes and EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
 
@@ -108,6 +109,7 @@ The storage unit package was refactored, adding the option of using static and n
 - [#6320](https://github.com/multiversx/mx-chain-go/pull/6320) - Chain simulator extra parameter for delay between vm queries
 - [#6268](https://github.com/multiversx/mx-chain-go/pull/6268) - Chain simulator verify tx on send
 - [#6248](https://github.com/multiversx/mx-chain-go/pull/6248) - Chain simulator remove consensus group size
+- [#6330](https://github.com/multiversx/mx-chain-go/pull/6330) - White list data verifier fixes chain simulator
 - [#6018](https://github.com/multiversx/mx-chain-go/pull/6018) - TrieRecreate refactor
 - [#6238](https://github.com/multiversx/mx-chain-go/pull/6238) - FIX: Destination shard id in chain simulator for meta chain addresses
 - [#6292](https://github.com/multiversx/mx-chain-go/pull/6292) - Extend delegation log events for multi claim and multi redelegate rewards
