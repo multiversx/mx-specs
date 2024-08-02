@@ -17,14 +17,18 @@ This documentation is relevant for the `tags/v1.7.16` tag release.
 Relayed v3 feature brings a cheaper, improved version of relayed transactions, that can hold multiple inner transactions. 
 The inner transactions will be full transactions.
 
-With this feature, a fix on the base cost of relayed transactions was implemented, to follow the minimum gas rule.
+Additionally, a fix on the base cost of relayed transactions was implemented, to follow the minimum gas rule. This fix affects all types of relayed transactions.
 
+Note: Relayed v1 and v2 will be deprecated and marked for removal once v3 will be fully adopted.
+
+The official relayed v3 docs are found [here](https://docs.multiversx.com/developers/relayed-transactions/#relayed-transactions-version-3).
 ### Impact:
+* A new type of transaction must be handled when reading blockchain data.
 * There are new enable epochs definitions for this feature, called `RelayedTransactionsV3EnableEpoch`, `FixRelayedBaseCostEnableEpoch`
 * There are changes to the configuration options in the `config.toml` file, a new section called `[RelayedTransactionConfig]` was added
 * There is a new field in the `Transaction` structure, `InnerTransactions`, that can hold multiple other `Transaction` as part of relayed v3
-* No binary flags changes
-* No API endpoints changes
+* No Node CLI arguments changes
+* No Node HTTP API endpoints changes
 
 ### Relevant PRs:
 - [#5572](https://github.com/multiversx/mx-chain-go/pull/5572) - New approach for relayed V3, transaction structure changed
@@ -45,9 +49,10 @@ With this feature, a fix on the base cost of relayed transactions was implemente
 The improvements implemented on ESDTs enable the dynamic NFT functionality.
 
 ### Impact:
+* There are new roles added `ESDTModifyRoyalties`, `ESDTModifyCreator`, `ESDTNFTRecreate`, `ESDTNFTUpdate`, `ESDTNFTSetNewURIs`
 * There is a new enable epoch definition for this feature, called `DynamicESDTEnableEpoch`
 * There are changes to the configuration options in the gas schedule files, new values were added for `ESDTModifyRoyalties`, `ESDTModifyCreator`,`ESDTNFTRecreate`,`ESDTNFTUpdate`, `ESDTNFTSetNewURIs`
-* No binary flags changes
+* No Node CLI arguments changes
 * API endpoints `/:address/nft/:tokenIdentifier/nonce/:nonce` and `/:address/esdt` will now return token type as well
 
 ### Relevant PRs:
@@ -65,14 +70,18 @@ The improvements implemented on ESDTs enable the dynamic NFT functionality.
 
 ## 3. Crypto API, new Opcodes and EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
 
-With this feature, new opcodes were enabled for developers, among with new crypto endpoints(`VerifySecp256r1`, `VerifyBLSSignatureShare`, `VerifyBLSMultiSig`).
-Another improvement was EGLD as part of MultiESDTTransfer (EGLD-000000).
+With this feature, new opcodes were enabled for developers, among with new crypto VM endpoints(`VerifySecp256r1`, `VerifyBLSSignatureShare`, `VerifyBLSMultiSig`).
+
+Additionally, EGLD(native tokens) can be now sent within MultiESDTTransfer (token identifier: EGLD-000000) along with custom tokens.
+
+Note: When using native tokens as part of MultiESDTTransfer, transaction value must be 0. 
 
 ### Impact:
+* EGLD transfers within MultiESDTTransfer must be handled when reading blockchain data.
 * There are new enable epochs definitions for this feature, called `EGLDInMultiTransferEnableEpoch` and `CryptoOpcodesV2EnableEpoch`
 * There are changes to the configuration options in the gas schedule files, new values were added for `VerifySecp256r1`, `VerifyBLSSignatureShare`,`VerifyBLSMultiSig`
-* No binary flags changes
-* No API endpoints changes
+* No Node CLI arguments changes
+* No Node HTTP API endpoints changes
 
 ### Relevant PRs:
 - [#6334](https://github.com/multiversx/mx-chain-go/pull/6334) - Multi transfer execute by user flag
@@ -83,10 +92,7 @@ Another improvement was EGLD as part of MultiESDTTransfer (EGLD-000000).
 The storage unit package was refactored, adding the option of using static and non-static storers.
 
 ### Impact:
-* No activation epoch
-* No configuration files changes
-* No binary flags changes
-* No API endpoints changes
+* No impact on validators/developers/integrators
 
 ### Relevant PRs:
 - [#5797](https://github.com/multiversx/mx-chain-go/pull/5797) - Use create with retries in persister factory
