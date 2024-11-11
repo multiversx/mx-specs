@@ -1,50 +1,18 @@
-[comment]: <> (tags/v1.7.16)
+[comment]: <> (tags/v1.8.4)
 
 # Contents
 
-This document explains the contents of the rc/v1.7.next1 release codenamed Interim. It is split in 2 sections:
+This document explains the contents of the rc/v1.7.next1 release codenamed Spica. It is split in 2 sections:
 - the **features** list containing detailed insights of the feature along with the external impact and the relevant
   pull requests list
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the
   external impact details
 
-This documentation is relevant for the `tags/v1.7.16` tag release.
+This documentation is relevant for the `tags/v1.8.4` tag release.
 
 # Features
 
-## 1. Relayed v3 [#5741](https://github.com/multiversx/mx-chain-go/pull/5741)
-
-Relayed v3 feature brings a cheaper, improved version of relayed transactions, that can hold multiple inner transactions. 
-The inner transactions will be full transactions.
-
-Additionally, a fix on the base cost of relayed transactions was implemented, to follow the minimum gas rule. This fix affects all types of relayed transactions.
-
-Note: Relayed v1 and v2 will be deprecated and marked for removal once v3 will be fully adopted.
-
-The official relayed v3 docs are found [here](https://docs.multiversx.com/developers/relayed-transactions/#relayed-transactions-version-3).
-### Impact:
-* A new type of transaction must be handled when reading blockchain data.
-* There are new enable epochs definitions for this feature, called `RelayedTransactionsV3EnableEpoch`, `FixRelayedBaseCostEnableEpoch`
-* There are changes to the configuration options in the `config.toml` file, a new section called `[RelayedTransactionConfig]` was added
-* There is a new field in the `Transaction` structure, `InnerTransactions`, that can hold multiple other `Transaction` as part of relayed v3
-* No Node CLI arguments changes
-* No Node HTTP API endpoints changes
-
-### Relevant PRs:
-- [#5572](https://github.com/multiversx/mx-chain-go/pull/5572) - New approach for relayed V3, transaction structure changed
-- [#5627](https://github.com/multiversx/mx-chain-go/pull/5627) - Separate fee handling for inner tx of type move balance
-- [#5981](https://github.com/multiversx/mx-chain-go/pull/5981) - Added api check for recursive relayed v3 + fixed interceptor
-- [#6252](https://github.com/multiversx/mx-chain-go/pull/6252) - RelayedV3 fixes
-- [#6176](https://github.com/multiversx/mx-chain-go/pull/6176) - Append log events for all inner transactions failure
-- [#6274](https://github.com/multiversx/mx-chain-go/pull/6274) - Rename FixRelayedMoveBalanceFlag to FixRelayedBaseCostFlag + proper fix
-- [#6278](https://github.com/multiversx/mx-chain-go/pull/6278) - Fixed processTxFee for inner tx after base cost fix
-- [#6280](https://github.com/multiversx/mx-chain-go/pull/6280) - Relayedv3 further fixes
-- [#6297](https://github.com/multiversx/mx-chain-go/pull/6297) - Added more integration tests for non-executable inner tx + small fix on logs append
-- [#6302](https://github.com/multiversx/mx-chain-go/pull/6302) - Change receivers ids relayed v3 and multi transfer integration
-- [#6328](https://github.com/multiversx/mx-chain-go/pull/6328) - Fixed tests by using real FailedTxLogsAccumulator
-- [#6147](https://github.com/multiversx/mx-chain-go/pull/6147) - Extra tests and coverage for relayed v3 with multiple inner transactions
-
-## 2. ESDT improvements [#5821](https://github.com/multiversx/mx-chain-go/pull/5821)
+## 1. ESDT improvements [#5821](https://github.com/multiversx/mx-chain-go/pull/5821)
 
 The improvements implemented on ESDTs enable the dynamic NFT functionality.
 
@@ -67,12 +35,14 @@ The improvements implemented on ESDTs enable the dynamic NFT functionality.
 - [#6220](https://github.com/multiversx/mx-chain-go/pull/6220) - Token type in altered accounts
 - [#6350](https://github.com/multiversx/mx-chain-go/pull/6350) - Fix missing role + Use setSpecialRole function in tests
 - [#6357](https://github.com/multiversx/mx-chain-go/pull/6357) - Dynamic roles singular
+- [#6434](https://github.com/multiversx/mx-chain-go/pull/6434) - Add testing scenarios and update go mod
+- [#6383](https://github.com/multiversx/mx-chain-go/pull/6383) - Fix some tests and add more tests
 
-## 3. Crypto API, new Opcodes and EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
+## 2. Crypto API, new Opcodes and EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
 
-With this feature, new opcodes were enabled for developers, among with new crypto VM endpoints(`VerifySecp256r1`, `VerifyBLSSignatureShare`, `VerifyBLSMultiSig`).
+With this feature, new opcodes were enabled for developers, among with new crypto VM endpoints (`VerifySecp256r1`, `VerifyBLSSignatureShare`, `VerifyBLSMultiSig`).
 
-Additionally, EGLD(native tokens) can be now sent within MultiESDTTransfer (token identifier: EGLD-000000) along with custom tokens.
+Additionally, EGLD (native tokens) can be now sent within MultiESDTTransfer (token identifier: EGLD-000000) along with custom tokens.
 
 Note: When using native tokens as part of MultiESDTTransfer, transaction value must be 0. 
 
@@ -87,7 +57,7 @@ Note: When using native tokens as part of MultiESDTTransfer, transaction value m
 - [#6334](https://github.com/multiversx/mx-chain-go/pull/6334) - Multi transfer execute by user flag
 - [#6313](https://github.com/multiversx/mx-chain-go/pull/6313) - Added egld with multi transfer test scenario
 
-## 4. Refactor persister factory [#6001](https://github.com/multiversx/mx-chain-go/pull/6001)
+## 3. Refactor persister factory [#6001](https://github.com/multiversx/mx-chain-go/pull/6001)
 
 The storage unit package was refactored, adding the option of using static and non-static storers.
 
