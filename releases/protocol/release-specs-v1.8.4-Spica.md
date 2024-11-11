@@ -2,7 +2,7 @@
 
 # Contents
 
-This document explains the contents of the rc/v1.7.next1 release codenamed Spica. It is split in 2 sections:
+This document explains the contents of the rc/v1.8 release codenamed Spica. It is split in 2 sections:
 - the **features** list containing detailed insights of the feature along with the external impact and the relevant
   pull requests list
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the
@@ -98,3 +98,5 @@ The storage unit package was refactored, adding the option of using static and n
 - [#6333](https://github.com/multiversx/mx-chain-go/pull/6333) - Fix node/termui dockerfiles
 - [#6281](https://github.com/multiversx/mx-chain-go/pull/6281) - Update Dockerfiles
 - [#6275](https://github.com/multiversx/mx-chain-go/pull/6275) - Added action for building keygenerator docker images
+- [#6274](https://github.com/multiversx/mx-chain-go/pull/6274) - Rename FixRelayedMoveBalanceFlag to FixRelayedBaseCostFlag + proper fix
+- [#6382](https://github.com/multiversx/mx-chain-go/pull/6382) - Added fix for relayed move balance to non payables
