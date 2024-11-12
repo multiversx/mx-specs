@@ -38,36 +38,31 @@ The improvements implemented on ESDTs enable the dynamic NFT functionality.
 - [#6434](https://github.com/multiversx/mx-chain-go/pull/6434) - Add testing scenarios and update go mod
 - [#6383](https://github.com/multiversx/mx-chain-go/pull/6383) - Fix some tests and add more tests
 
-## 2. Crypto API, new Opcodes and EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
+## 2. Crypto API new Opcodes [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
 
 With this feature, new opcodes were enabled for developers, among with new crypto VM endpoints (`VerifySecp256r1`, `VerifyBLSSignatureShare`, `VerifyBLSMultiSig`).
 
-Additionally, EGLD (native tokens) can be now sent within MultiESDTTransfer (token identifier: EGLD-000000) along with custom tokens.
+### Impact:
+* There is a new enable epoch definition for this feature, called `CryptoOpcodesV2EnableEpoch`
+* There are changes to the configuration options in the gas schedule files, new values were added for `VerifySecp256r1`, `VerifyBLSSignatureShare`,`VerifyBLSMultiSig`
+* No Node CLI arguments changes
+* No Node HTTP API endpoints changes
 
-Note: When using native tokens as part of MultiESDTTransfer, transaction value must be 0. 
+## 3. EGLD in MultiESDTTransfer [#6139](https://github.com/multiversx/mx-chain-go/pull/6139)
+
+EGLD (native tokens) can be now sent within MultiESDTTransfer (token identifier: EGLD-000000) along with custom tokens.
+
+Note: When using native tokens as part of MultiESDTTransfer, transaction value must be 0.
 
 ### Impact:
 * EGLD transfers within MultiESDTTransfer must be handled when reading blockchain data.
-* There are new enable epochs definitions for this feature, called `EGLDInMultiTransferEnableEpoch` and `CryptoOpcodesV2EnableEpoch`
-* There are changes to the configuration options in the gas schedule files, new values were added for `VerifySecp256r1`, `VerifyBLSSignatureShare`,`VerifyBLSMultiSig`
+* There is a new enable epoch definition for this feature, called `EGLDInMultiTransferEnableEpoch`
 * No Node CLI arguments changes
 * No Node HTTP API endpoints changes
 
 ### Relevant PRs:
 - [#6334](https://github.com/multiversx/mx-chain-go/pull/6334) - Multi transfer execute by user flag
 - [#6313](https://github.com/multiversx/mx-chain-go/pull/6313) - Added egld with multi transfer test scenario
-
-## 3. Refactor persister factory [#6001](https://github.com/multiversx/mx-chain-go/pull/6001)
-
-The storage unit package was refactored, adding the option of using static and non-static storers.
-
-### Impact:
-* No impact on validators/developers/integrators
-
-### Relevant PRs:
-- [#5797](https://github.com/multiversx/mx-chain-go/pull/5797) - Use create with retries in persister factory
-- [#5995](https://github.com/multiversx/mx-chain-go/pull/5995) - Persister tmp file path
-- [#6010](https://github.com/multiversx/mx-chain-go/pull/6010) - Update to use latest storage version
 
 # Smaller features or fixes
 
@@ -100,3 +95,7 @@ The storage unit package was refactored, adding the option of using static and n
 - [#6275](https://github.com/multiversx/mx-chain-go/pull/6275) - Added action for building keygenerator docker images
 - [#6274](https://github.com/multiversx/mx-chain-go/pull/6274) - Rename FixRelayedMoveBalanceFlag to FixRelayedBaseCostFlag + proper fix
 - [#6382](https://github.com/multiversx/mx-chain-go/pull/6382) - Added fix for relayed move balance to non payables
+- [#6001](https://github.com/multiversx/mx-chain-go/pull/6001) - Refactor persister factory
+- [#5797](https://github.com/multiversx/mx-chain-go/pull/5797) - Use create with retries in persister factory
+- [#5995](https://github.com/multiversx/mx-chain-go/pull/5995) - Persister tmp file path
+- [#6010](https://github.com/multiversx/mx-chain-go/pull/6010) - Update to use latest storage version
