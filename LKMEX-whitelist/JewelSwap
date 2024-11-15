@@ -1,23 +1,26 @@
 ## Name of the project
-JewelSwap
+JewelSwap xExchange Energy DAO
 
 ## Description of the project
-JewelSwap offers autocompounding for the xExchange farms and ability to lock XMEX to JWLXMEX and stake it to receive a fraction of rewards from farms. https://docs.jewelswap.io/multiversx/jewelswap-yield-farming/farms/xexchange-farms-energy-dao
+The JewelSwap xExchange Energy DAO allows users to be able to transfer and lock their xMEX in return to mint the JWLXMEX derivative token. The Energy DAO continuously relock the xMEX tokens for the full 4 years and provides xMEX Energy boosted xExchange Farms and allocates a specific % of farm rewards to the JWLXMEX stakers achieving a flywheel effect between the farmers, stakers who share a common goal to achieve the most optimal returns for their investment.
+https://docs.jewelswap.io/multiversx/jewelswap-yield-farming/farms/xexchange-farms-energy-dao
 
 ## Purpose
-Offer a yield for XMEX, by converting to JWLXMEX and staking it for rewards.
+Users will transfer and lock their xMEX in the JewelSwap Energy Dao. They will receive a JWLXMEX derivative token. This is similar to the Curve Convex model whereby users will lock their CRV tokens in Convex and in return, they will get the CVXCRV tokens. 
+The XMEX Energy in JewelSwap Energy DAO will be locked indefinitely for 4 years and will always be relocked at full 4 years. The Energy DAO will also allow farmers to enjoy Energy boosted farms, and a % of the rewards will go towards users who contributed their XMEX and stake their JWLXMEX tokens. 
+The Energy DAO model also acts to permanently remove MEX from circulation as and when MEX is locked for XMEX, and subsequently locked for JWLXMEX.
 
 ## Address of Smart Contract
 https://explorer.multiversx.com/accounts/erd1qqqqqqqqqqqqqpgq9slqavjm7pglxgzuskwlvnq53gnk02vndfysq95mpq
 
 ## Smart Contract Code
-Can't share, here is documentation https://docs.jewelswap.io/multiversx/jewelswap-yield-farming/farms/xexchange-farms-energy-dao
+Documentation https://docs.jewelswap.io/multiversx/jewelswap-yield-farming/farms/xexchange-farms-energy-dao
 
 ## Description for every Smart Contract functionality
-Can't share, here is documentation https://docs.jewelswap.io/multiversx/jewelswap-yield-farming/farms/xexchange-farms-energy-dao
+Documentation https://docs.jewelswap.io/multiversx/jewelswap-yield-farming/farms/xexchange-farms-energy-dao
 
 ## Number of users
-~100, rapidly expanding.
+~100, and rapidly expanding.
 
 ## Average LKMEX used during the previous month
 N/A
