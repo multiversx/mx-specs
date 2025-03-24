@@ -4,7 +4,7 @@
 
 This document explains the contents of the release codenamed Andromeda. 
 
-Although it can be considered one big feature, this document is split into 2 features, containing detailed insights of the feature along with the external impact and the relevant pull requests list.
+Although it can be considered one big feature, this document is split into three features, containing detailed insights of the feature along with the external impact and the relevant pull requests list.
 
 This documentation is relevant for the `tags/v1.9.0` tag release.
 
@@ -32,13 +32,30 @@ With this feature, the chain parameters(round duration, consensus group size, mi
 - [#4819](https://github.com/multiversx/mx-chain-go/pull/4819) - Fixes for nodes coordinator with chain parameters
 - [#4927](https://github.com/multiversx/mx-chain-go/pull/4927) - Chain parameters notifier
 
-## 2. Equivalent proofs [#5786](https://github.com/multiversx/mx-chain-go/pull/5786)
+## 2. Fixed ordering in consensus [#6436](https://github.com/multiversx/mx-chain-go/pull/6436)
+
+Each eligible node is now required to sign, as the order of signing was moved to a fixed 400 value. 
+
+This simplifies the equivalent proof mechanics verification as it can be almost self-contained during an epoch.
+
+### Impact:
+
+* There is a new enable epoch definition for this feature, called `FixedOrderInConsensusEnableEpoch`
+* `config.toml` holds a new entry for the newly added `ChainParametersByEpoch` with the full size consensus
+* No Node CLI arguments changes
+* No Node HTTP API endpoints changes
+
+### Relevant PRs:
+- [#6436](https://github.com/multiversx/mx-chain-go/pull/6436) - Fixed order consensus
+- [#6448](https://github.com/multiversx/mx-chain-go/pull/6448) - Fixed ordering for consensus group after flag activation
+
+## 3. Equivalent proofs [#5786](https://github.com/multiversx/mx-chain-go/pull/5786)
 
 Equivalent proofs represent consensus proof data which includes aggregated signature, the corresponding public keys bitmap, and other fields like round and epoch used for validation.
 
 Previously, only the leader handled the aggregated signature and set it on the initially proposed block, but now it can be created and propagated as a separate equivalent proof by every eligible node in consensus. These proofs are equivalent since they represent a majority from the eligible nodes in consensus.
 
-The proof will be propagated in the network only if it was created directly. Otherwise, it will not be further propagated when received from other nodes in the network, to avoid flooding.
+An equivalent consensus proof will be propagated only once by every node, either if it was created by the node or if it was the first proof received and validated by the node.
 
 The proof for the current block will be included in the next block structure. A particular block is considered final if there is an equivalent proof for it.
 
@@ -46,11 +63,13 @@ The sync process has been updated to process a block only when there is a corres
 
 ### Impact:
 
-* There are two new enable epoch definitions for this feature, called `EquivalentMessagesEnableEpoch` and `FixedOrderInConsensusEnableEpoch`
+* There is a new enable epoch definition for this feature, called `FixedOrderInConsensusEnableEpoch`
 * `config.toml` changes:
-  * new entry for the newly added `ChainParametersByEpoch`
   * new configuration for the data pool holding equivalent proofs
   * new configuration for the intercepted data verifier
+* Header structure was adapted to hold the proof of the previous block. The header proof is a new data structure that holds:
+  * important header information such as bitmap, aggregated signature and header hash;
+  * other information used for validation, such as header epoch, nonce, shard, round and start of epoch detail.
 * No Node CLI arguments changes
 * No Node HTTP API endpoints changes
 
@@ -71,9 +90,7 @@ The sync process has been updated to process a block only when there is a corres
 - [#6415](https://github.com/multiversx/mx-chain-go/pull/6415) - Increase coverage for nodesSetup
 - [#6424](https://github.com/multiversx/mx-chain-go/pull/6424) - Benchmark signature verification
 - [#6431](https://github.com/multiversx/mx-chain-go/pull/6431) - Adapt final info message check
-- [#6436](https://github.com/multiversx/mx-chain-go/pull/6436) - Fixed order consensus
 - [#6437](https://github.com/multiversx/mx-chain-go/pull/6437) - Broadcast header on subroundBlock, on the shard_meta topic
-- [#6448](https://github.com/multiversx/mx-chain-go/pull/6448) - Fixed ordering for consensus group after flag activation
 - [#6456](https://github.com/multiversx/mx-chain-go/pull/6456) - Equivalent proofs pool
 - [#6457](https://github.com/multiversx/mx-chain-go/pull/6457) - EquivalentProofsTopic + interceptor
 - [#6462](https://github.com/multiversx/mx-chain-go/pull/6462) - Intercepted message validation optimization
