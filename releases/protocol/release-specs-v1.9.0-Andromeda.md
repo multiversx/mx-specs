@@ -34,7 +34,7 @@ With this feature, the chain parameters(round duration, consensus group size, mi
 
 ## 2. Fixed ordering in consensus [#6436](https://github.com/multiversx/mx-chain-go/pull/6436)
 
-Each eligible node is now required to sign, as the order of signing was moved to a fixed 400 value. 
+Each eligible node is now required to sign and the order of signature aggregation was fixed to the order of the eligible nodes decided at epoch start.
 
 This simplifies the equivalent proof mechanics verification as it can be almost self-contained during an epoch.
 
@@ -57,7 +57,7 @@ Previously, only the leader handled the aggregated signature and set it on the i
 
 An equivalent consensus proof will be propagated only once by every node, either if it was created by the node or if it was the first proof received and validated by the node.
 
-The proof for the current block will be included in the next block structure. A particular block is considered final if there is an equivalent proof for it.
+The proof for the current block will be included in the next block structure. A particular block is considered final if there exists an equivalent proof for it.
 
 The sync process has been updated to process a block only when there is a corresponding proof for it.
 
