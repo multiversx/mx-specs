@@ -34,7 +34,7 @@ With this feature, the chain parameters(round duration, consensus group size, mi
 
 ## 2. Fixed ordering in consensus [#6436](https://github.com/multiversx/mx-chain-go/pull/6436)
 
-Each eligible node is now required to sign and the order of signature aggregation was fixed to the order of the eligible nodes decided at epoch start.
+The order of signature aggregation was fixed to the order of the eligible nodes decided at epoch start. As a result, each eligible node is now required to sign.
 
 This simplifies the equivalent proof mechanics verification as it can be almost self-contained during an epoch.
 
@@ -69,7 +69,7 @@ The sync process has been updated to process a block only when there is a corres
   * new configuration for the intercepted data verifier
 * Header structure was adapted to hold the proof of the previous block. The header proof is a new data structure that holds:
   * important header information such as bitmap, aggregated signature and header hash;
-  * other information used for validation, such as header epoch, nonce, shard, round and start of epoch detail.
+  * other information used for validation, such as header epoch, nonce, shard, round and start of epoch details.
 * No Node CLI arguments changes
 * No Node HTTP API endpoints changes
 
