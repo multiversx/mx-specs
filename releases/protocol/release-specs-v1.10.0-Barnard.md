@@ -40,26 +40,7 @@ It improves the governance smart contract by:
 - [#6496](https://github.com/multiversx/mx-chain-go/pull/6496) - Add cancel method before voting start
 - [#6868](https://github.com/multiversx/mx-chain-go/pull/6868) - Float64 conversion issue fix
 
-## 2. Delegation improvements v3 [#6605](https://github.com/multiversx/mx-chain-go/pull/6605)
-
-This feature enables users to move funds from one staking provider to another once every 30 days. 
-
-In the same time, staking providers will not be allowed to change the fee earlier than 30 days.
-
-### Impact:
-
-* Configuration changes:
-  * There is a new enable epoch definition for this feature, called `DelegationImprovementsV3EnableEpoch`
-* No Node CLI arguments changes
-* No Node HTTP API endpoints changes
-
-### Relevant PRs:
-- [#6500](https://github.com/multiversx/mx-chain-go/pull/6500) - Claim rewards with call value should error
-- [#6503](https://github.com/multiversx/mx-chain-go/pull/6503) - IncreaseFee with 30 epoch cooldown
-- [#6509](https://github.com/multiversx/mx-chain-go/pull/6509) - Migrate from staking provider to staking provider
-- [#6591](https://github.com/multiversx/mx-chain-go/pull/6591) - Integration tests migrate delegation
-
-## 3. Accounts storage iterator [#6547](https://github.com/multiversx/mx-chain-go/pull/6547)
+## 2. Accounts storage iterator [#6547](https://github.com/multiversx/mx-chain-go/pull/6547)
 
 This feature enables retrieval of tokens from a data trie in a sequential order, with the possibility of continuing from a checkpoint if the data trie has lots of leaves, thus iterating thorough all the leaves in multiple accesses.
 
