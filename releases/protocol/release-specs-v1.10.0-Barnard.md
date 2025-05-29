@@ -69,3 +69,4 @@ This feature enables retrieval of tokens from a data trie in a sequential order,
 - [#6518](https://github.com/multiversx/mx-chain-go/pull/6518) - Optimize GitHub workflows
 - [#6519](https://github.com/multiversx/mx-chain-go/pull/6519) - Optimize GitHub workflows
 - [#6612](https://github.com/multiversx/mx-chain-go/pull/6612) - Heartbeats chain simulator
+- [#6997](https://github.com/multiversx/mx-chain-go/pull/6997) - Fix epoch start trigger missing prev header
