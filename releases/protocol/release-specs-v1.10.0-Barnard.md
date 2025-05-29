@@ -2,7 +2,7 @@
 
 # Contents
 
-This document explains the contents of the release codenamed Spica. It is split in 2 sections:
+This document explains the contents of the release codenamed Barnard. It is split in 2 sections:
 - the **features** list containing detailed insights of the feature along with the external impact and the relevant
   pull requests list
 - the **smaller features and fixes** area contains the one-pull request small features or fixes along with the
