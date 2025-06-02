@@ -54,9 +54,18 @@ This feature enables retrieval of tokens from a data trie in a sequential order,
 - [#6086](https://github.com/multiversx/mx-chain-go/pull/6086) - Accounts storage iterator
 - [#6696](https://github.com/multiversx/mx-chain-go/pull/6696) - Integrate new account storage iterator
 
+## 3. Change penalise gas [#6264](https://github.com/multiversx/mx-chain-go/pull/6264)
+
+This feature brings a configurable maximum higher factor, modifying it from 10 to 2, so the penalization would apply starting from lower gas values provided.
+
+### Impact:
+
+* `economics.toml` has a new entry for the `FeeSettings` called `MaxGasHigherFactorAccepted` that is now set to 2. Previously, this was a constant set to the value of 10.
+* No Node CLI arguments changes
+* No Node HTTP API endpoints changes
+
 # Smaller features or fixes
 
-- [#6264](https://github.com/multiversx/mx-chain-go/pull/6264) - Change penalise gas
 - [#6511](https://github.com/multiversx/mx-chain-go/pull/6511) - Update compiler to go 1.23
 - [#6932](https://github.com/multiversx/mx-chain-go/pull/6932) - VM reserved functions activation flag integration [integrates mx-chain-vm-go [#913](https://github.com/multiversx/mx-chain-vm-go/pull/913)]
 - [#6793](https://github.com/multiversx/mx-chain-go/pull/6793) - Automatic activation of nodes disabled
